@@ -1,6 +1,9 @@
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar";
+import ParticlesBackground from "./ParticlesBackground";
+import CustomCursor from "./CustomCursor";
+import ScrollProgress from "./ScrollProgress";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,8 +27,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ru">
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
+        <ParticlesBackground />
         <div className="mesh-gradient" />
+        <ScrollProgress />
         <Navbar />
+        <CustomCursor />
         <main className="relative z-10">{children}</main>
       </body>
     </html>

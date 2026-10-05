@@ -3,6 +3,8 @@ import { useState } from "react";
 import Image from "next/image";
 import FadeIn from "./FadeIn";
 import AnimatedCounter from "./AnimatedCounter";
+import MagneticButton from "./MagneticButton";
+import TiltCard from "./TiltCard";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -91,25 +93,24 @@ export default function Home() {
           {/* Кнопки */}
           <FadeIn delay={0.8}>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a
-                href="#services"
-                className="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-0.5"
-              >
-                🚀 Услуги
-              </a>
-              <a
-                href="#contact"
-                className="px-8 py-3 glass rounded-lg font-semibold text-white transition-all hover:-translate-y-0.5"
-              >
-                💬 Связаться
-              </a>
-              <a
-                href="https://t.me/kirill_icetea"
-                target="_blank"
-                className="px-8 py-3 glass rounded-lg font-semibold text-white transition-all hover:-translate-y-0.5"
-              >
-                ✈️ Telegram
-              </a>
+              <MagneticButton
+  href="#services"
+  className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-colors shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
+>
+  🚀 Услуги
+</MagneticButton>
+<MagneticButton
+  href="#contact"
+  className="inline-block px-8 py-3 glass rounded-lg font-semibold text-white"
+>
+  💬 Связаться
+</MagneticButton>
+<MagneticButton
+  href="https://t.me/kirill_icetea"
+  className="inline-block px-8 py-3 glass rounded-lg font-semibold text-white"
+>
+  ✈️ Telegram
+</MagneticButton>
             </div>
           </FadeIn>
 
@@ -239,7 +240,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-                        {/* SKILLS */}
+                              {/* SKILLS */}
       <section id="skills" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -256,100 +257,112 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* Большая карточка — Управление проектами */}
-            <FadeIn delay={0.3}>
-              <div className="glass rounded-2xl p-8 md:col-span-2 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
-                <div className="relative">
-                  <div className="text-5xl mb-4">📊</div>
-                  <h3 className="text-2xl font-bold mb-3 text-white">Управление проектами</h3>
-                  <p className="text-slate-400 leading-relaxed max-w-lg">
-                    Agile / Scrum (база), ведение трекеров, декомпозиция задач,
-                    контроль сроков и качества. Применяю в текущих проектах.
-                  </p>
+            <FadeIn delay={0.3} className="md:col-span-2">
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
+                  <div className="relative">
+                    <div className="text-5xl mb-4">📊</div>
+                    <h3 className="text-2xl font-bold mb-3 text-white">Управление проектами</h3>
+                    <p className="text-slate-400 leading-relaxed max-w-lg">
+                      Agile / Scrum (база), ведение трекеров, декомпозиция задач,
+                      контроль сроков и качества. Применяю в текущих проектах.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Клиентский менеджмент */}
             <FadeIn delay={0.4}>
-              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
-                <div className="relative">
-                  <div className="text-4xl mb-4">💬</div>
-                  <h3 className="text-xl font-bold mb-3 text-white">Клиентский менеджмент</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    Переговоры, КП, презентации, полный цикл документооборота, программы лояльности.
-                  </p>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-4">💬</div>
+                    <h3 className="text-xl font-bold mb-3 text-white">Клиентский менеджмент</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      Переговоры, КП, презентации, полный цикл документооборота, программы лояльности.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Операционное управление */}
             <FadeIn delay={0.5}>
-              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">⚙️</div>
-                <div className="relative">
-                  <div className="text-4xl mb-4">⚙️</div>
-                  <h3 className="text-xl font-bold mb-3 text-white">Операционное управление</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    Построение процессов с нуля, автоматизация отчётности, регламенты, координация отделов.
-                  </p>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">⚙️</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-4">⚙️</div>
+                    <h3 className="text-xl font-bold mb-3 text-white">Операционное управление</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      Построение процессов с нуля, автоматизация отчётности, регламенты, координация отделов.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Event-менеджмент */}
             <FadeIn delay={0.6}>
-              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
-                <div className="relative">
-                  <div className="text-4xl mb-4">🎯</div>
-                  <h3 className="text-xl font-bold mb-3 text-white">Event-менеджмент</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    Организация федеральных мероприятий, работа со спикерами, логистика, бюджет.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Техническая база */}
-            <FadeIn delay={0.7}>
-              <div className="glass rounded-2xl p-8 md:col-span-2 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
-                <div className="relative">
-                  <div className="text-5xl mb-4">💻</div>
-                  <h3 className="text-2xl font-bold mb-3 text-white">Техническая база</h3>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {["Python", "SQL", "Docker", "CI/CD", "Linux", "Git", "Django", "API"].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-blue-300">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* ИИ и данные */}
-            <FadeIn delay={0.8}>
-              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group md:col-span-3">
-                <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🤖</div>
-                <div className="relative flex items-start gap-6">
-                  <div className="text-5xl">🤖</div>
-                  <div>
-                    <h3 className="text-2xl font-bold mb-3 text-white">ИИ и данные</h3>
-                    <p className="text-slate-400 leading-relaxed">
-                      Участие во внедрении GPT-3/4, понимание нейросетей, работа с ТЗ. Магистратура «Менеджмент проектов в сфере искусственного интеллекта».
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-4">🎯</div>
+                    <h3 className="text-xl font-bold mb-3 text-white">Event-менеджмент</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      Организация федеральных мероприятий, работа со спикерами, логистика, бюджет.
                     </p>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
+            </FadeIn>
+
+            {/* Техническая база */}
+            <FadeIn delay={0.7} className="md:col-span-2">
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
+                  <div className="relative">
+                    <div className="text-5xl mb-4">💻</div>
+                    <h3 className="text-2xl font-bold mb-3 text-white">Техническая база</h3>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {["Python", "SQL", "Docker", "CI/CD", "Linux", "Git", "Django", "API"].map((tech) => (
+                        <span key={tech} className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-blue-300">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </TiltCard>
+            </FadeIn>
+
+            {/* ИИ и данные */}
+            <FadeIn delay={0.8} className="md:col-span-3">
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🤖</div>
+                  <div className="relative flex items-start gap-6">
+                    <div className="text-5xl">🤖</div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-3 text-white">ИИ и данные</h3>
+                      <p className="text-slate-400 leading-relaxed">
+                        Участие во внедрении GPT-3/4, понимание нейросетей, работа с ТЗ. Магистратура «Менеджмент проектов в сфере искусственного интеллекта».
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </TiltCard>
             </FadeIn>
 
           </div>
         </div>
       </section>
-                        {/* SERVICES */}
+                              {/* SERVICES */}
       <section id="services" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -366,93 +379,103 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* Главная услуга — Поддержка проектов (большая) */}
-            <FadeIn delay={0.3}>
-              <div className="glass rounded-2xl p-8 lg:col-span-2 lg:row-span-2 hover:border-blue-500 transition-all relative overflow-hidden group flex flex-col h-full">
-                <div className="absolute top-0 right-0 text-[12rem] opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
-                <div className="relative flex-1 flex flex-col">
-                  <div className="text-5xl mb-4">📊</div>
-                  <h3 className="text-3xl font-bold mb-4 text-white">Поддержка проектов</h3>
-                  <p className="text-slate-300 text-lg leading-relaxed mb-6 flex-1">
-                    Помогаю проектным командам: веду документацию, координирую задачи,
-                    контролирую сроки, готовлю отчёты. Работаю в Agile/Scrum,
-                    понимаю техническую сторону (Python, SQL, Docker).
-                  </p>
-                  <p className="text-sm text-slate-400 mb-4">
-                    <span className="text-blue-400 font-semibold">Для кого:</span> команды, стартапы, малый бизнес
-                  </p>
-                  <a href="#contact" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold transition-colors group-hover:gap-3">
-                    Обсудить задачи <span>→</span>
-                  </a>
+            <FadeIn delay={0.3} className="lg:col-span-2 lg:row-span-2">
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group flex flex-col">
+                  <div className="absolute top-0 right-0 text-[12rem] opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
+                  <div className="relative flex-1 flex flex-col">
+                    <div className="text-5xl mb-4">📊</div>
+                    <h3 className="text-3xl font-bold mb-4 text-white">Поддержка проектов</h3>
+                    <p className="text-slate-300 text-lg leading-relaxed mb-6 flex-1">
+                      Помогаю проектным командам: веду документацию, координирую задачи,
+                      контролирую сроки, готовлю отчёты. Работаю в Agile/Scrum,
+                      понимаю техническую сторону (Python, SQL, Docker).
+                    </p>
+                    <p className="text-sm text-slate-400 mb-4">
+                      <span className="text-blue-400 font-semibold">Для кого:</span> команды, стартапы, малый бизнес
+                    </p>
+                    <a href="#contact" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold transition-colors group-hover:gap-3">
+                      Обсудить задачи <span>→</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Коучинг */}
             <FadeIn delay={0.4}>
-              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
-                <div className="relative">
-                  <div className="text-4xl mb-3">🎯</div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Коучинг и наставничество</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                    Помогаю начинающим специалистам: цели, навыки, разбор кейсов, план роста.
-                  </p>
-                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                    Записаться →
-                  </a>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">🎯</div>
+                    <h3 className="text-xl font-bold mb-2 text-white">Коучинг и наставничество</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                      Помогаю начинающим специалистам: цели, навыки, разбор кейсов, план роста.
+                    </p>
+                    <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                      Записаться →
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Мотивация */}
             <FadeIn delay={0.5}>
-              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎤</div>
-                <div className="relative">
-                  <div className="text-4xl mb-3">🎤</div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Мотивация и выступления</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                    Лекции, мастер-классы. Делюсь опытом: карьера, IT-переход, смена профессии.
-                  </p>
-                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                    Пригласить →
-                  </a>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎤</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">🎤</div>
+                    <h3 className="text-xl font-bold mb-2 text-white">Мотивация и выступления</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                      Лекции, мастер-классы. Делюсь опытом: карьера, IT-переход, смена профессии.
+                    </p>
+                    <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                      Пригласить →
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Клиентский сервис */}
             <FadeIn delay={0.6}>
-              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
-                <div className="relative">
-                  <div className="text-4xl mb-3">💬</div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Клиентский сервис</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                    Построение сервиса, работа с возражениями, удержание, документооборот.
-                  </p>
-                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                    Заказать →
-                  </a>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">💬</div>
+                    <h3 className="text-xl font-bold mb-2 text-white">Клиентский сервис</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                      Построение сервиса, работа с возражениями, удержание, документооборот.
+                    </p>
+                    <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                      Заказать →
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Менторство */}
             <FadeIn delay={0.7}>
-              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🚀</div>
-                <div className="relative">
-                  <div className="text-4xl mb-3">🚀</div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Менторство в IT-переходе</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                    Помогаю перейти в IT / PM: разбор целей, план обучения, поддержка.
-                  </p>
-                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                    Начать путь →
-                  </a>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🚀</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">🚀</div>
+                    <h3 className="text-xl font-bold mb-2 text-white">Менторство в IT-переходе</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                      Помогаю перейти в IT / PM: разбор целей, план обучения, поддержка.
+                    </p>
+                    <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                      Начать путь →
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
           </div>
@@ -616,7 +639,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-                        {/* PROJECTS */}
+                              {/* PROJECTS */}
       <section id="projects" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -634,208 +657,218 @@ export default function Home() {
             
             {/* Проект 1 */}
             <FadeIn delay={0.3}>
-              <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🏛️</div>
-                <div className="relative">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="text-4xl">🏛️</div>
-                    <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                      2021
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    IV Всероссийский модульный практикум
-                  </h3>
-                  <p className="text-sm text-slate-500 mb-4">
-                    Калининград · 26–27 августа 2021
-                  </p>
-                  <p className="text-sm text-blue-400 font-semibold mb-3">
-                    Роль: Координатор проекта
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-300 mb-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Координация деловой программы (теория + практика)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Работа с экспертами и министерствами регионов</span>
-                    </li>
-                  </ul>
-                  <div className="flex flex-wrap gap-4">
-                    <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=16969" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                      Страница мероприятия →
-                    </a>
-                    <a href="https://mtpkrskstate.ru/upload/iblock/938/g7puwhu4eh901bhape7pxxoa24dm52hh/Krasnoyarskiy-kray-REK.pdf" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
-                      Письмо →
-                    </a>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🏛️</div>
+                  <div className="relative">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-4xl">🏛️</div>
+                      <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                        2021
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      IV Всероссийский модульный практикум
+                    </h3>
+                    <p className="text-sm text-slate-500 mb-4">
+                      Калининград · 26–27 августа 2021
+                    </p>
+                    <p className="text-sm text-blue-400 font-semibold mb-3">
+                      Роль: Координатор проекта
+                    </p>
+                    <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Координация деловой программы (теория + практика)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Работа с экспертами и министерствами регионов</span>
+                      </li>
+                    </ul>
+                    <div className="flex flex-wrap gap-4">
+                      <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=16969" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                        Страница мероприятия →
+                      </a>
+                      <a href="https://mtpkrskstate.ru/upload/iblock/938/g7puwhu4eh901bhape7pxxoa24dm52hh/Krasnoyarskiy-kray-REK.pdf" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
+                        Письмо →
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Проект 2 */}
             <FadeIn delay={0.4}>
-              <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
-                <div className="relative">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="text-4xl">💻</div>
-                    <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                      2021
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    Всероссийский вебинар «ЖКУ в МКД-новостройках»
-                  </h3>
-                  <p className="text-sm text-slate-500 mb-4">
-                    Онлайн · 17 сентября 2021
-                  </p>
-                  <p className="text-sm text-blue-400 font-semibold mb-3">
-                    Роль: Координатор проекта
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-300 mb-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Организация вебинара и работа со спикером</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Коммуникация с ГЖИ Воронежской области</span>
-                    </li>
-                  </ul>
-                  <div className="flex flex-wrap gap-4">
-                    <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=17784" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                      Страница мероприятия →
-                    </a>
-                    <a href="https://gzhi.govvrn.ru/storage/2023/02/01/voronezskaia.pdf" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
-                      Письмо →
-                    </a>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
+                  <div className="relative">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-4xl">💻</div>
+                      <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                        2021
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      Всероссийский вебинар «ЖКУ в МКД-новостройках»
+                    </h3>
+                    <p className="text-sm text-slate-500 mb-4">
+                      Онлайн · 17 сентября 2021
+                    </p>
+                    <p className="text-sm text-blue-400 font-semibold mb-3">
+                      Роль: Координатор проекта
+                    </p>
+                    <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Организация вебинара и работа со спикером</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Коммуникация с ГЖИ Воронежской области</span>
+                      </li>
+                    </ul>
+                    <div className="flex flex-wrap gap-4">
+                      <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=17784" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                        Страница мероприятия →
+                      </a>
+                      <a href="https://gzhi.govvrn.ru/storage/2023/02/01/voronezskaia.pdf" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
+                        Письмо →
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Проект 3 */}
             <FadeIn delay={0.5}>
-              <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">📋</div>
-                <div className="relative">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="text-4xl">📋</div>
-                    <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                      2022
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    II Всероссийский практический семинар
-                  </h3>
-                  <p className="text-sm text-slate-500 mb-4">
-                    Москва · 31 марта — 1 апреля 2022
-                  </p>
-                  <p className="text-sm text-blue-400 font-semibold mb-3">
-                    Роль: Координатор проекта
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-300 mb-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Координация программы (10+ тем по тарифному регулированию)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Повышение квалификации от ведущих ВУЗов</span>
-                    </li>
-                  </ul>
-                  <div className="flex flex-wrap gap-4">
-                    <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=19199" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                      Страница мероприятия →
-                    </a>
-                    <a href="https://vk.ru/wall-181018671_61" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
-                      Письмо →
-                    </a>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">📋</div>
+                  <div className="relative">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-4xl">📋</div>
+                      <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                        2022
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      II Всероссийский практический семинар
+                    </h3>
+                    <p className="text-sm text-slate-500 mb-4">
+                      Москва · 31 марта — 1 апреля 2022
+                    </p>
+                    <p className="text-sm text-blue-400 font-semibold mb-3">
+                      Роль: Координатор проекта
+                    </p>
+                    <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Координация программы (10+ тем по тарифному регулированию)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Повышение квалификации от ведущих ВУЗов</span>
+                      </li>
+                    </ul>
+                    <div className="flex flex-wrap gap-4">
+                      <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=19199" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                        Страница мероприятия →
+                      </a>
+                      <a href="https://vk.ru/wall-181018671_61" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
+                        Письмо →
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Проект 4 */}
             <FadeIn delay={0.6}>
-              <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🌊</div>
-                <div className="relative">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="text-4xl">🌊</div>
-                    <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                      2022
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    V Общероссийский летний съезд
-                  </h3>
-                  <p className="text-sm text-slate-500 mb-4">
-                    Сочи · 8–10 июня 2022
-                  </p>
-                  <p className="text-sm text-blue-400 font-semibold mb-3">
-                    Роль: Координатор проекта
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-300 mb-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Координация 3 форматов: теория, открытый микрофон, бизнес-игра</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Работа с ФАС, ВУЗами и экспертами отрасли</span>
-                    </li>
-                  </ul>
-                  <div className="flex flex-wrap gap-4">
-                    <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=19368" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                      Страница мероприятия →
-                    </a>
-                    <a href="https://tarif.gov39.ru/files/2022/Съезд_1-объединены.pdf" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
-                      Программа →
-                    </a>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🌊</div>
+                  <div className="relative">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-4xl">🌊</div>
+                      <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                        2022
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      V Общероссийский летний съезд
+                    </h3>
+                    <p className="text-sm text-slate-500 mb-4">
+                      Сочи · 8–10 июня 2022
+                    </p>
+                    <p className="text-sm text-blue-400 font-semibold mb-3">
+                      Роль: Координатор проекта
+                    </p>
+                    <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Координация 3 форматов: теория, открытый микрофон, бизнес-игра</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Работа с ФАС, ВУЗами и экспертами отрасли</span>
+                      </li>
+                    </ul>
+                    <div className="flex flex-wrap gap-4">
+                      <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=19368" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                        Страница мероприятия →
+                      </a>
+                      <a href="https://tarif.gov39.ru/files/2022/Съезд_1-объединены.pdf" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
+                        Программа →
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Проект 5 — ВКР (большая) */}
-            <FadeIn delay={0.7}>
-              <div className="glass rounded-2xl p-6 md:p-8 md:col-span-2 hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-[10rem] opacity-5 group-hover:opacity-10 transition-opacity">🎓</div>
-                <div className="relative">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="text-5xl">🎓</div>
-                    <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                      2025
-                    </span>
+            <FadeIn delay={0.7} className="md:col-span-2">
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-[10rem] opacity-5 group-hover:opacity-10 transition-opacity">🎓</div>
+                  <div className="relative">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-5xl">🎓</div>
+                      <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                        2025
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      ВКР: «Разработка рекламной кампании для Rutube»
+                    </h3>
+                    <p className="text-sm text-slate-500 mb-4">
+                      Учебный проект · Бакалавриат «Синергия»
+                    </p>
+                    <p className="text-sm text-blue-400 font-semibold mb-4">
+                      Роль: Автор и руководитель проекта
+                    </p>
+                    <ul className="space-y-2 text-sm text-slate-300">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Анализ рынка видеохостингов (Rutube, YouTube, VK Video)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Анкетирование 50+ респондентов, выявление проблем платформы</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-0.5">▸</span>
+                        <span>Разработка рекламной кампании с бюджетом 20 млн руб., оценка ROI 1100%</span>
+                      </li>
+                    </ul>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
-                    ВКР: «Разработка рекламной кампании для Rutube»
-                  </h3>
-                  <p className="text-sm text-slate-500 mb-4">
-                    Учебный проект · Бакалавриат «Синергия»
-                  </p>
-                  <p className="text-sm text-blue-400 font-semibold mb-4">
-                    Роль: Автор и руководитель проекта
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-300">
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Анализ рынка видеохостингов (Rutube, YouTube, VK Video)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Анкетирование 50+ респондентов, выявление проблем платформы</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">▸</span>
-                      <span>Разработка рекламной кампании с бюджетом 20 млн руб., оценка ROI 1100%</span>
-                    </li>
-                  </ul>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
 
           </div>
