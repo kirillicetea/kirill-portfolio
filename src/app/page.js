@@ -1,11 +1,52 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import FadeIn from "./FadeIn";
 import AnimatedCounter from "./AnimatedCounter";
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    service: "Проектное управление",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({
+          name: "",
+          contact: "",
+          service: "Проектное управление",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
+  };
+
   return (
     <div className="min-h-screen text-white relative">
-                  {/* HERO */}
+                        {/* HERO */}
       <section className="min-h-screen flex items-center justify-center px-6 pt-20 relative">
         <div className="max-w-4xl w-full text-center relative z-10">
           
@@ -18,7 +59,7 @@ export default function Home() {
                   alt="Кирилл Мирончук"
                   fill
                   sizes="160px"
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                 />
               </div>
@@ -1133,20 +1174,28 @@ export default function Home() {
               <div className="glass rounded-2xl p-8 h-full">
                 <h3 className="text-xl font-bold text-white mb-6">Оставить заявку</h3>
 
-                <form className="space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm text-slate-400 mb-2">Ваше имя</label>
+                    <label className="block text-sm text-slate-400 mb-2">Ваше имя *</label>
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
                       placeholder="Как к вам обращаться?"
                       className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm text-slate-400 mb-2">Email или Telegram</label>
+                    <label className="block text-sm text-slate-400 mb-2">Email или Telegram *</label>
                     <input
                       type="text"
+                      name="contact"
+                      value={formData.contact}
+                      onChange={handleChange}
+                      required
                       placeholder="Для связи"
                       className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none transition-colors"
                     />
@@ -1154,7 +1203,12 @@ export default function Home() {
 
                   <div>
                     <label className="block text-sm text-slate-400 mb-2">Что вас интересует?</label>
-                    <select className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors">
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
+                    >
                       <option>Проектное управление</option>
                       <option>Коучинг и наставничество</option>
                       <option>Мотивация и выступления</option>
@@ -1165,8 +1219,12 @@ export default function Home() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-slate-400 mb-2">Сообщение</label>
+                    <label className="block text-sm text-slate-400 mb-2">Сообщение *</label>
                     <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
                       rows="4"
                       placeholder="Расскажите о задаче..."
                       className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none transition-colors resize-none"
@@ -1175,14 +1233,22 @@ export default function Home() {
 
                   <button
                     type="submit"
-                    className="w-full px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
+                    disabled={status === "loading"}
+                    className="w-full px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Отправить заявку
+                    {status === "loading" ? "Отправляю..." : "Отправить заявку"}
                   </button>
 
-                  <p className="text-xs text-slate-500 text-center">
-                    Пока форма не отправляет данные — скоро настроим
-                  </p>
+                  {status === "success" && (
+                    <p className="text-sm text-green-400 text-center">
+                      ✅ Заявка отправлена! Отвечу в течение 24 часов.
+                    </p>
+                  )}
+                  {status === "error" && (
+                    <p className="text-sm text-red-400 text-center">
+                      ❌ Ошибка отправки. Напишите в Telegram: @kirill_icetea
+                    </p>
+                  )}
                 </form>
               </div>
             </FadeIn>
