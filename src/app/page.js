@@ -77,10 +77,16 @@ export default function Home() {
 
           {/* Подзаголовок */}
           <FadeIn delay={0.4}>
-            <p className="text-xl md:text-2xl text-slate-300 mb-2">
-              Проектный менеджер | Коуч | Мотиватор
-            </p>
-          </FadeIn>
+  <p className="text-xl md:text-2xl text-slate-300 mb-2">
+    Менеджер проектов | Коуч | Мотиватор
+  </p>
+</FadeIn>
+
+<FadeIn delay={0.5}>
+  <p className="text-sm md:text-base text-blue-400 font-semibold mb-4">
+    🟢 Открыт к junior-позициям и стажировкам
+  </p>
+</FadeIn>
 
           {/* Краткое описание */}
           <FadeIn delay={0.6}>
@@ -481,49 +487,113 @@ export default function Home() {
           </div>
         </div>
       </section>
-                        {/* IN PROGRESS */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto">
+            {/* MY STRENGTHS */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <div className="glass rounded-2xl p-8 md:p-10 border border-blue-500/30 relative overflow-hidden">
-              <div className="absolute top-0 right-0 text-[12rem] opacity-5">🌱</div>
-              <div className="relative">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="text-4xl">🌱</span>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-space-grotesk)]">
-                    Сейчас я учусь и развиваюсь
-                  </h3>
-                </div>
-
-                <ul className="space-y-4 text-slate-300">
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-400 mt-1">▸</span>
-                    <span>
-                      <span className="text-white font-semibold">Проектное управление под ключ</span> — практика в магистратуре, стажировки, реальные проекты
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-400 mt-1">▸</span>
-                    <span>
-                      <span className="text-white font-semibold">Управление AI-проектами</span> — магистратура «Менеджмент проектов в сфере искусственного интеллекта»
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-400 mt-1">▸</span>
-                    <span>
-                      <span className="text-white font-semibold">Углубление в техническую базу</span> — Python, SQL, Docker, CI/CD
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-400 mt-1">▸</span>
-                    <span>
-                      <span className="text-white font-semibold">Практика в реальных проектах</span> — ищу стажировку или junior-позицию
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+              Мои сильные стороны
+            </h2>
           </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
+              Честно — без прикрас. Что я уже умею и приношу команде
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <FadeIn delay={0.3}>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">⚡</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">⚡</div>
+                    <h3 className="text-lg font-bold mb-2 text-white">Быстро включаюсь</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      За 4 года в «Синергии» привык разбираться в новых процессах с первой недели.
+                    </p>
+                  </div>
+                </div>
+              </TiltCard>
+            </FadeIn>
+
+            <FadeIn delay={0.4}>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">🎯</div>
+                    <h3 className="text-lg font-bold mb-2 text-white">Довожу до конца</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      Координировал 4 федеральных мероприятия. Ни один проект не сорвался по срокам.
+                    </p>
+                  </div>
+                </div>
+              </TiltCard>
+            </FadeIn>
+
+            <FadeIn delay={0.5}>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🧠</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">🧠</div>
+                    <h3 className="text-lg font-bold mb-2 text-white">Понимаю техсторону</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      Прошёл Python-курс (440 ч). Понимаю код, Docker, CI/CD — говорю с разработчиками на одном языке.
+                    </p>
+                  </div>
+                </div>
+              </TiltCard>
+            </FadeIn>
+
+            <FadeIn delay={0.6}>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">💬</div>
+                    <h3 className="text-lg font-bold mb-2 text-white">Клиентский опыт</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      4 года переговоров, работы с возражениями, документацией и ожиданиями.
+                    </p>
+                  </div>
+                </div>
+              </TiltCard>
+            </FadeIn>
+
+            <FadeIn delay={0.7}>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">📚</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">📚</div>
+                    <h3 className="text-lg font-bold mb-2 text-white">Учусь параллельно</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      Магистратура по AI-проектам + работа + курсы. Умею учиться, не бросая дело.
+                    </p>
+                  </div>
+                </div>
+              </TiltCard>
+            </FadeIn>
+
+            <FadeIn delay={0.8}>
+              <TiltCard className="h-full">
+                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🚀</div>
+                  <div className="relative">
+                    <div className="text-4xl mb-3">🚀</div>
+                    <h3 className="text-lg font-bold mb-2 text-white">Мотивация</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      Меняю профессию осознанно. Хочу расти в PM и делать это долго. Не «на год».
+                    </p>
+                  </div>
+                </div>
+              </TiltCard>
+            </FadeIn>
+
+          </div>
         </div>
       </section>
                         {/* EXPERIENCE */}
@@ -1123,6 +1193,50 @@ export default function Home() {
             </FadeIn>
 
           </div>
+        </div>
+      </section>
+      {/* OPEN TO */}
+      <section className="py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <FadeIn>
+            <div className="glass rounded-2xl p-8 md:p-10 border border-blue-500/30 relative overflow-hidden">
+              <div className="absolute top-0 right-0 text-[12rem] opacity-5">🎯</div>
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-4xl">🎯</span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-space-grotesk)]">
+                    Открыт к предложениям
+                  </h3>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">💼</span>
+                    <div>
+                      <p className="text-white font-semibold mb-1">Junior PM</p>
+                      <p className="text-sm text-slate-400">Полная занятость, Москва / удалёнка</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">🎓</span>
+                    <div>
+                      <p className="text-white font-semibold mb-1">Стажировка</p>
+                      <p className="text-sm text-slate-400">В проектном управлении / IT</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">⚡</span>
+                    <div>
+                      <p className="text-white font-semibold mb-1">Part-time</p>
+                      <p className="text-sm text-slate-400">Координация проектов, поддержка команд</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
                   {/* CONTACT */}
