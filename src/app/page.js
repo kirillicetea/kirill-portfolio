@@ -2,27 +2,27 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-      {/* HERO */}
-      <section className="min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-4xl w-full text-center">
+    <div className="min-h-screen text-white relative">
+            {/* HERO */}
+      <section className="min-h-screen flex items-center justify-center px-6 pt-20 relative">
+        <div className="max-w-4xl w-full text-center relative z-10">
           
           {/* Фото */}
           <div className="mb-8 flex justify-center">
-            <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-blue-500 shadow-2xl shadow-blue-500/50">
+            <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-blue-500 shadow-2xl shadow-blue-500/50 glow-blue">
               <Image
                 src="/photo.jpg"
                 alt="Кирилл Мирончук"
                 fill
                 sizes="160px"
-                className="object-cover object-top"
+                className="object-cover"
                 priority
               />
             </div>
           </div>
 
           {/* Имя */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-text font-[family-name:var(--font-space-grotesk)]">
             Кирилл Мирончук
           </h1>
 
@@ -41,20 +41,20 @@ export default function Home() {
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href="#services"
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-colors"
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-0.5"
             >
               🚀 Услуги
             </a>
             <a
               href="#contact"
-              className="px-8 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold transition-colors"
+              className="px-8 py-3 glass rounded-lg font-semibold text-white transition-all hover:-translate-y-0.5"
             >
               💬 Связаться
             </a>
             <a
               href="https://t.me/kirill_icetea"
               target="_blank"
-              className="px-8 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold transition-colors"
+              className="px-8 py-3 glass rounded-lg font-semibold text-white transition-all hover:-translate-y-0.5"
             >
               ✈️ Telegram
             </a>
@@ -62,44 +62,106 @@ export default function Home() {
 
         </div>
       </section>
-            {/* ABOUT */}
-      <section id="about" className="py-24 px-6 bg-slate-900">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  {/* ABOUT */}
+      <section id="about" className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
             Обо мне
           </h2>
+          <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
+            Мой путь — от клиентского менеджмента к проектному управлению в IT
+          </p>
 
-          <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
-            <p>
-              4 года я работаю в Университете «Синергия»: прошёл путь от менеджера по продажам
-              до старшего аккаунт-менеджера. Сейчас развиваю операционный отдел с нуля —
-              выстраиваю процессы, автоматизирую отчётность, координирую взаимодействие
-              между подразделениями.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            {/* Левая колонка — история */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="glass rounded-2xl p-8">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="text-3xl">💼</div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      4 года в «Синергии»
+                    </h3>
+                    <p className="text-slate-300 leading-relaxed">
+                      Прошёл путь от менеджера по продажам до старшего аккаунт-менеджера.
+                      Сейчас развиваю операционный отдел с нуля — выстраиваю процессы,
+                      автоматизирую отчётность, координирую взаимодействие между подразделениями.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-            <p>
-              До этого координировал <span className="text-blue-400 font-semibold">4 федеральных мероприятия</span> в сфере
-              ЖКХ: всероссийские практикумы, семинары, вебинары и съезды. Работал
-              с министерствами, ФАС, ведущими ВУЗами и экспертами отрасли.
-            </p>
+              <div className="glass rounded-2xl p-8">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="text-3xl">🏛️</div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      Координация федеральных проектов
+                    </h3>
+                    <p className="text-slate-300 leading-relaxed">
+                      Координировал <span className="text-blue-400 font-semibold">4 федеральных мероприятия</span> в сфере
+                      ЖКХ: всероссийские практикумы, семинары, вебинары и съезды.
+                      Работал с министерствами, ФАС, ведущими ВУЗами и экспертами отрасли.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-            <p>
-              Параллельно учусь в магистратуре на «Менеджмент проектов в сфере
-              искусственного интеллекта» и прошёл курс «Python-разработчик»
-              в Яндекс.Практикум — чтобы говорить с разработчиками на одном языке.
-            </p>
+              <div className="glass rounded-2xl p-8">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="text-3xl">🎓</div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      Учусь и развиваюсь
+                    </h3>
+                    <p className="text-slate-300 leading-relaxed">
+                      Параллельно учусь в магистратуре на «Менеджмент проектов в сфере
+                      искусственного интеллекта» и прошёл курс «Python-разработчик»
+                      в Яндекс.Практикум — чтобы говорить с разработчиками на одном языке.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-            <p className="text-slate-400 italic border-l-4 border-blue-500 pl-6 py-2">
-              Я не называю себя проектным менеджером — пока. Но я уже управлял
-              проектами, процессами и людьми. И хочу делать это в ИТ.
-            </p>
+              <div className="glass rounded-2xl p-8 border-l-4 border-blue-500">
+                <p className="text-slate-400 italic leading-relaxed">
+                  «Я не называю себя проектным менеджером — пока. Но я уже управлял
+                  проектами, процессами и людьми. И хочу делать это в ИТ.»
+                </p>
+              </div>
+            </div>
+
+            {/* Правая колонка — статистика */}
+            <div className="space-y-4">
+              <div className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all">
+                <div className="text-4xl font-bold gradient-text mb-2">4+</div>
+                <div className="text-sm text-slate-400">года в клиентском менеджменте</div>
+              </div>
+              
+              <div className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all">
+                <div className="text-4xl font-bold gradient-text mb-2">4</div>
+                <div className="text-sm text-slate-400">федеральных мероприятия</div>
+              </div>
+
+              <div className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all">
+                <div className="text-4xl font-bold gradient-text mb-2">440</div>
+                <div className="text-sm text-slate-400">часов Python-курса</div>
+              </div>
+
+              <div className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all">
+                <div className="text-4xl font-bold gradient-text mb-2">2025</div>
+                <div className="text-sm text-slate-400">магистратура по AI-проектам</div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
-            {/* SKILLS */}
-      <section id="skills" className="py-24 px-6 bg-slate-950">
+                  {/* SKILLS */}
+      <section id="skills" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
             Что я уже умею
           </h2>
           <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
@@ -108,195 +170,230 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {/* Карточка 1 */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
-              <div className="text-4xl mb-4">📊</div>
-              <h3 className="text-xl font-bold mb-3 text-white">Управление проектами</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Agile / Scrum (база), ведение трекеров, декомпозиция задач, контроль сроков и качества.
-              </p>
+            {/* Большая карточка — Управление проектами */}
+            <div className="glass rounded-2xl p-8 md:col-span-2 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
+              <div className="relative">
+                <div className="text-5xl mb-4">📊</div>
+                <h3 className="text-2xl font-bold mb-3 text-white">Управление проектами</h3>
+                <p className="text-slate-400 leading-relaxed max-w-lg">
+                  Agile / Scrum (база), ведение трекеров, декомпозиция задач,
+                  контроль сроков и качества. Применяю в текущих проектах.
+                </p>
+              </div>
             </div>
 
-            {/* Карточка 2 */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
-              <div className="text-4xl mb-4">💬</div>
-              <h3 className="text-xl font-bold mb-3 text-white">Клиентский менеджмент</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Переговоры, КП, презентации, полный цикл документооборота, программы лояльности.
-              </p>
+            {/* Клиентский менеджмент */}
+            <div className="glass rounded-2xl p-8 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
+              <div className="relative">
+                <div className="text-4xl mb-4">💬</div>
+                <h3 className="text-xl font-bold mb-3 text-white">Клиентский менеджмент</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Переговоры, КП, презентации, полный цикл документооборота, программы лояльности.
+                </p>
+              </div>
             </div>
 
-            {/* Карточка 3 */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
-              <div className="text-4xl mb-4">⚙️</div>
-              <h3 className="text-xl font-bold mb-3 text-white">Операционное управление</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Построение процессов с нуля, автоматизация отчётности, регламенты, координация отделов.
-              </p>
+            {/* Операционное управление */}
+            <div className="glass rounded-2xl p-8 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">⚙️</div>
+              <div className="relative">
+                <div className="text-4xl mb-4">⚙️</div>
+                <h3 className="text-xl font-bold mb-3 text-white">Операционное управление</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Построение процессов с нуля, автоматизация отчётности, регламенты, координация отделов.
+                </p>
+              </div>
             </div>
 
-            {/* Карточка 4 */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
-              <div className="text-4xl mb-4">🎯</div>
-              <h3 className="text-xl font-bold mb-3 text-white">Event-менеджмент</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Организация федеральных мероприятий, работа со спикерами, логистика, бюджет.
-              </p>
+            {/* Event-менеджмент */}
+            <div className="glass rounded-2xl p-8 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
+              <div className="relative">
+                <div className="text-4xl mb-4">🎯</div>
+                <h3 className="text-xl font-bold mb-3 text-white">Event-менеджмент</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Организация федеральных мероприятий, работа со спикерами, логистика, бюджет.
+                </p>
+              </div>
             </div>
 
-            {/* Карточка 5 */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
-              <div className="text-4xl mb-4">💻</div>
-              <h3 className="text-xl font-bold mb-3 text-white">Техническая база</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Python (основы, ООП), SQL, Docker, CI/CD (GitHub Actions), Linux, Git.
-              </p>
+            {/* Техническая база — большая */}
+            <div className="glass rounded-2xl p-8 md:col-span-2 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
+              <div className="relative">
+                <div className="text-5xl mb-4">💻</div>
+                <h3 className="text-2xl font-bold mb-3 text-white">Техническая база</h3>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {["Python", "SQL", "Docker", "CI/CD", "Linux", "Git", "Django", "API"].map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-blue-300">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Карточка 6 */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
-              <div className="text-4xl mb-4">🤖</div>
-              <h3 className="text-xl font-bold mb-3 text-white">ИИ и данные</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Участие во внедрении GPT-3/4, понимание нейросетей, работа с ТЗ.
-              </p>
+            {/* ИИ и данные */}
+            <div className="glass rounded-2xl p-8 hover:border-blue-500 transition-all relative overflow-hidden group md:col-span-3">
+              <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🤖</div>
+              <div className="relative flex items-start gap-6">
+                <div className="text-5xl">🤖</div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-3 text-white">ИИ и данные</h3>
+                  <p className="text-slate-400 leading-relaxed">
+                    Участие во внедрении GPT-3/4, понимание нейросетей, работа с ТЗ. Магистратура «Менеджмент проектов в сфере искусственного интеллекта».
+                  </p>
+                </div>
+              </div>
             </div>
 
           </div>
         </div>
       </section>
-            {/* SERVICES */}
-      <section id="services" className="py-24 px-6 bg-slate-900">
+                  {/* SERVICES */}
+      <section id="services" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
             Услуги
           </h2>
           <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
             Помогаю людям и компаниям — честно, с тем опытом, который у меня есть
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {/* Услуга 1 */}
-            <div className="p-8 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="text-4xl mb-4">📊</div>
-              <h3 className="text-2xl font-bold mb-3 text-white">Поддержка проектов</h3>
-              <p className="text-slate-400 mb-4 leading-relaxed">
-                Помогаю проектным командам: веду документацию, координирую задачи, контролирую сроки, готовлю отчёты. Работаю в Agile/Scrum, понимаю техническую сторону (Python, SQL, Docker).
-              </p>
-              <p className="text-sm text-slate-500 mb-4">
-                <span className="text-blue-400 font-semibold">Для кого:</span> команды, стартапы, малый бизнес — которым нужен ответственный координатор
-              </p>
-              <a href="#contact" className="inline-block text-blue-400 hover:text-blue-300 font-semibold transition-colors">
-                Обсудить задачи →
-              </a>
+            {/* Главная услуга — Поддержка проектов (большая) */}
+            <div className="glass rounded-2xl p-8 lg:col-span-2 lg:row-span-2 hover:border-blue-500 transition-all relative overflow-hidden group flex flex-col">
+              <div className="absolute top-0 right-0 text-[12rem] opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
+              <div className="relative flex-1 flex flex-col">
+                <div className="text-5xl mb-4">📊</div>
+                <h3 className="text-3xl font-bold mb-4 text-white">Поддержка проектов</h3>
+                <p className="text-slate-300 text-lg leading-relaxed mb-6 flex-1">
+                  Помогаю проектным командам: веду документацию, координирую задачи,
+                  контролирую сроки, готовлю отчёты. Работаю в Agile/Scrum,
+                  понимаю техническую сторону (Python, SQL, Docker).
+                </p>
+                <p className="text-sm text-slate-400 mb-4">
+                  <span className="text-blue-400 font-semibold">Для кого:</span> команды, стартапы, малый бизнес
+                </p>
+                <a href="#contact" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold transition-colors group-hover:gap-3">
+                  Обсудить задачи <span>→</span>
+                </a>
+              </div>
             </div>
 
-            {/* Услуга 2 */}
-            <div className="p-8 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="text-4xl mb-4">🎯</div>
-              <h3 className="text-2xl font-bold mb-3 text-white">Коучинг и наставничество</h3>
-              <p className="text-slate-400 mb-4 leading-relaxed">
-                Помогаю начинающим специалистам: постановка целей, развитие навыков, разбор кейсов, план роста. Делюсь опытом клиентского менеджмента и построения процессов.
-              </p>
-              <p className="text-sm text-slate-500 mb-4">
-                <span className="text-blue-400 font-semibold">Для кого:</span> начинающие менеджеры, студенты, специалисты в переходе
-              </p>
-              <a href="#contact" className="inline-block text-blue-400 hover:text-blue-300 font-semibold transition-colors">
-                Записаться на сессию →
-              </a>
+            {/* Коучинг */}
+            <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
+              <div className="relative">
+                <div className="text-4xl mb-3">🎯</div>
+                <h3 className="text-xl font-bold mb-2 text-white">Коучинг и наставничество</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                  Помогаю начинающим специалистам: цели, навыки, разбор кейсов, план роста.
+                </p>
+                <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                  Записаться →
+                </a>
+              </div>
             </div>
 
-            {/* Услуга 3 */}
-            <div className="p-8 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="text-4xl mb-4">🎤</div>
-              <h3 className="text-2xl font-bold mb-3 text-white">Мотивация и выступления</h3>
-              <p className="text-slate-400 mb-4 leading-relaxed">
-                Мотивационные лекции, выступления на мероприятиях, мастер-классы. Делюсь опытом: как строить карьеру, как переходить в IT, как не бояться менять профессию.
-              </p>
-              <p className="text-sm text-slate-500 mb-4">
-                <span className="text-blue-400 font-semibold">Для кого:</span> компании, образовательные учреждения, студенческие сообщества
-              </p>
-              <a href="#contact" className="inline-block text-blue-400 hover:text-blue-300 font-semibold transition-colors">
-                Пригласить спикера →
-              </a>
+            {/* Мотивация */}
+            <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎤</div>
+              <div className="relative">
+                <div className="text-4xl mb-3">🎤</div>
+                <h3 className="text-xl font-bold mb-2 text-white">Мотивация и выступления</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                  Лекции, мастер-классы. Делюсь опытом: карьера, IT-переход, смена профессии.
+                </p>
+                <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                  Пригласить →
+                </a>
+              </div>
             </div>
 
-            {/* Услуга 4 */}
-            <div className="p-8 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="text-4xl mb-4">💬</div>
-              <h3 className="text-2xl font-bold mb-3 text-white">Клиентский сервис</h3>
-              <p className="text-slate-400 mb-4 leading-relaxed">
-                Помогаю построить клиентский сервис: работа с возражениями, удержание клиентов, документооборот, программы лояльности. Аудит и обучение команды.
-              </p>
-              <p className="text-sm text-slate-500 mb-4">
-                <span className="text-blue-400 font-semibold">Для кого:</span> компании, которые хотят улучшить клиентский опыт
-              </p>
-              <a href="#contact" className="inline-block text-blue-400 hover:text-blue-300 font-semibold transition-colors">
-                Заказать консультацию →
-              </a>
+            {/* Клиентский сервис */}
+            <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
+              <div className="relative">
+                <div className="text-4xl mb-3">💬</div>
+                <h3 className="text-xl font-bold mb-2 text-white">Клиентский сервис</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                  Построение сервиса, работа с возражениями, удержание, документооборот.
+                </p>
+                <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                  Заказать →
+                </a>
+              </div>
             </div>
 
-            {/* Услуга 5 */}
-            <div className="p-8 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500 transition-all md:col-span-2">
-              <div className="text-4xl mb-4">🚀</div>
-              <h3 className="text-2xl font-bold mb-3 text-white">Менторство в IT-переходе</h3>
-              <p className="text-slate-400 mb-4 leading-relaxed">
-                Помогаю специалистам, которые хотят перейти в IT или проектное управление. Разбор целей, план обучения, поддержка на пути. Делюсь своим опытом: Python-курс, магистратура, переход в IT.
-              </p>
-              <p className="text-sm text-slate-500 mb-4">
-                <span className="text-blue-400 font-semibold">Для кого:</span> люди, которые меняют профессию
-              </p>
-              <a href="#contact" className="inline-block text-blue-400 hover:text-blue-300 font-semibold transition-colors">
-                Начать путь →
-              </a>
+            {/* Менторство */}
+            <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🚀</div>
+              <div className="relative">
+                <div className="text-4xl mb-3">🚀</div>
+                <h3 className="text-xl font-bold mb-2 text-white">Менторство в IT-переходе</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                  Помогаю перейти в IT / PM: разбор целей, план обучения, поддержка.
+                </p>
+                <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                  Начать путь →
+                </a>
+              </div>
             </div>
 
           </div>
         </div>
       </section>
-            {/* IN PROGRESS */}
-      <section className="py-16 px-6 bg-slate-950">
+                  {/* IN PROGRESS */}
+      <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="p-8 bg-gradient-to-br from-blue-950/50 to-slate-900 rounded-2xl border border-blue-900/50">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-3xl">🌱</span>
-              <h3 className="text-2xl font-bold text-white">Сейчас я учусь и развиваюсь</h3>
-            </div>
+          <div className="glass rounded-2xl p-8 md:p-10 border border-blue-500/30 relative overflow-hidden">
+            <div className="absolute top-0 right-0 text-[12rem] opacity-5">🌱</div>
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-4xl">🌱</span>
+                <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-space-grotesk)]">
+                  Сейчас я учусь и развиваюсь
+                </h3>
+              </div>
 
-            <ul className="space-y-4 text-slate-300">
-              <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">▸</span>
-                <span>
-                  <span className="text-white font-semibold">Проектное управление под ключ</span> — практика в магистратуре, стажировки, реальные проекты
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">▸</span>
-                <span>
-                  <span className="text-white font-semibold">Управление AI-проектами</span> — магистратура «Менеджмент проектов в сфере искусственного интеллекта»
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">▸</span>
-                <span>
-                  <span className="text-white font-semibold">Углубление в техническую базу</span> — Python, SQL, Docker, CI/CD
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">▸</span>
-                <span>
-                  <span className="text-white font-semibold">Практика в реальных проектах</span> — ищу стажировку или junior-позицию в проектном управлении
-                </span>
-              </li>
-            </ul>
+              <ul className="space-y-4 text-slate-300">
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-400 mt-1">▸</span>
+                  <span>
+                    <span className="text-white font-semibold">Проектное управление под ключ</span> — практика в магистратуре, стажировки, реальные проекты
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-400 mt-1">▸</span>
+                  <span>
+                    <span className="text-white font-semibold">Управление AI-проектами</span> — магистратура «Менеджмент проектов в сфере искусственного интеллекта»
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-400 mt-1">▸</span>
+                  <span>
+                    <span className="text-white font-semibold">Углубление в техническую базу</span> — Python, SQL, Docker, CI/CD
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-400 mt-1">▸</span>
+                  <span>
+                    <span className="text-white font-semibold">Практика в реальных проектах</span> — ищу стажировку или junior-позицию
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
-            {/* EXPERIENCE */}
-      <section id="experience" className="py-24 px-6 bg-slate-900">
+                  {/* EXPERIENCE */}
+      <section id="experience" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
             Опыт работы
           </h2>
           <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
@@ -305,24 +402,29 @@ export default function Home() {
 
           <div className="space-y-8">
             
-            {/* Работа 1 — ПРОШЛАЯ (сверху) */}
+            {/* Работа 1 — ПРОШЛАЯ */}
             <div className="relative pl-8 border-l-2 border-blue-500/30 hover:border-blue-500/60 transition-colors">
               <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500/50 shadow-lg shadow-blue-500/30"></div>
               
-              <div className="pb-8">
-                <div className="flex flex-wrap items-center gap-3 mb-2">
-                  <span className="text-sm font-semibold text-slate-400 bg-slate-800 px-3 py-1 rounded-full">
+              <div className="glass rounded-2xl p-6 md:p-8">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <span className="text-sm font-semibold text-slate-400 bg-slate-800/50 px-3 py-1 rounded-full">
                     Июнь 2021 — Май 2022
                   </span>
                   <span className="text-sm text-slate-500">1 год</span>
                 </div>
                 
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Менеджер 1 грейда, Event-менеджер
-                </h3>
-                <p className="text-lg text-slate-400 mb-4">
-                  Информационный портал управления ЖКХ
-                </p>
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="text-3xl">🏛️</div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-1">
+                      Менеджер 1 грейда, Event-менеджер
+                    </h3>
+                    <p className="text-lg text-slate-400">
+                      Информационный портал управления ЖКХ
+                    </p>
+                  </div>
+                </div>
 
                 <ul className="space-y-2 text-slate-300">
                   <li className="flex items-start gap-3">
@@ -345,24 +447,29 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Работа 2 — ТЕКУЩАЯ (снизу) */}
+            {/* Работа 2 — ТЕКУЩАЯ */}
             <div className="relative pl-8 border-l-2 border-blue-500 hover:border-blue-400 transition-colors">
               <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500 shadow-lg shadow-blue-500/50 animate-pulse"></div>
               
-              <div className="pb-8">
-                <div className="flex flex-wrap items-center gap-3 mb-2">
+              <div className="glass rounded-2xl p-6 md:p-8 border border-blue-500/30">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
                   <span className="text-sm font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
                     Июнь 2022 — настоящее время
                   </span>
                   <span className="text-sm text-slate-500">4+ года</span>
                 </div>
                 
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Старший аккаунт-менеджер
-                </h3>
-                <p className="text-lg text-slate-400 mb-4">
-                  Московский финансово-промышленный университет «Синергия»
-                </p>
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="text-3xl">🎓</div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-1">
+                      Старший аккаунт-менеджер
+                    </h3>
+                    <p className="text-lg text-slate-400">
+                      Московский финансово-промышленный университет «Синергия»
+                    </p>
+                  </div>
+                </div>
 
                 <ul className="space-y-2 text-slate-300">
                   <li className="flex items-start gap-3">
@@ -388,251 +495,235 @@ export default function Home() {
           </div>
         </div>
       </section>
-            {/* PROJECTS */}
-      <section id="projects" className="py-24 px-6 bg-slate-950">
+                  {/* PROJECTS */}
+      <section id="projects" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
             Проекты
           </h2>
           <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
             Реальный опыт: федеральные мероприятия и учебные кейсы
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Проект 1 */}
-            <div className="p-8 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="flex items-start justify-between mb-4">
-                <div className="text-3xl">🏛️</div>
-                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                  2021
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">
-                IV Всероссийский модульный практикум
-              </h3>
-              <p className="text-sm text-slate-500 mb-4">
-                Калининград · 26–27 августа 2021
-              </p>
-              <p className="text-sm text-blue-400 font-semibold mb-3">
-                Роль: Координатор проекта
-              </p>
-              <ul className="space-y-2 text-sm text-slate-300 mb-4">
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Координация деловой программы (теория + практика)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Работа с экспертами и министерствами регионов</span>
-                </li>
-              </ul>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=16969"
-                  target="_blank"
-                  className="inline-block text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors"
-                >
-                  Страница мероприятия →
-                </a>
-                <a
-                  href="https://mtpkrskstate.ru/upload/iblock/938/g7puwhu4eh901bhape7pxxoa24dm52hh/Krasnoyarskiy-kray-REK.pdf"
-                  target="_blank"
-                  className="inline-block text-slate-400 hover:text-slate-300 text-sm font-semibold transition-colors"
-                >
-                  Информационное письмо →
-                </a>
+            <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🏛️</div>
+              <div className="relative">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-4xl">🏛️</div>
+                  <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                    2021
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  IV Всероссийский модульный практикум
+                </h3>
+                <p className="text-sm text-slate-500 mb-4">
+                  Калининград · 26–27 августа 2021
+                </p>
+                <p className="text-sm text-blue-400 font-semibold mb-3">
+                  Роль: Координатор проекта
+                </p>
+                <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Координация деловой программы (теория + практика)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Работа с экспертами и министерствами регионов</span>
+                  </li>
+                </ul>
+                <div className="flex flex-wrap gap-4">
+                  <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=16969" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                    Страница мероприятия →
+                  </a>
+                  <a href="https://mtpkrskstate.ru/upload/iblock/938/g7puwhu4eh901bhape7pxxoa24dm52hh/Krasnoyarskiy-kray-REK.pdf" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
+                    Письмо →
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Проект 2 */}
-            <div className="p-8 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="flex items-start justify-between mb-4">
-                <div className="text-3xl">💻</div>
-                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                  2021
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">
-                Всероссийский вебинар «ЖКУ в МКД-новостройках»
-              </h3>
-              <p className="text-sm text-slate-500 mb-4">
-                Онлайн · 17 сентября 2021
-              </p>
-              <p className="text-sm text-blue-400 font-semibold mb-3">
-                Роль: Координатор проекта
-              </p>
-              <ul className="space-y-2 text-sm text-slate-300 mb-4">
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Организация вебинара и работа со спикером</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Коммуникация с ГЖИ Воронежской области</span>
-                </li>
-              </ul>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=17784"
-                  target="_blank"
-                  className="inline-block text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors"
-                >
-                  Страница мероприятия →
-                </a>
-                <a
-                  href="https://gzhi.govvrn.ru/storage/2023/02/01/voronezskaia.pdf"
-                  target="_blank"
-                  className="inline-block text-slate-400 hover:text-slate-300 text-sm font-semibold transition-colors"
-                >
-                  Информационное письмо →
-                </a>
+            <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
+              <div className="relative">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-4xl">💻</div>
+                  <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                    2021
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  Всероссийский вебинар «ЖКУ в МКД-новостройках»
+                </h3>
+                <p className="text-sm text-slate-500 mb-4">
+                  Онлайн · 17 сентября 2021
+                </p>
+                <p className="text-sm text-blue-400 font-semibold mb-3">
+                  Роль: Координатор проекта
+                </p>
+                <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Организация вебинара и работа со спикером</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Коммуникация с ГЖИ Воронежской области</span>
+                  </li>
+                </ul>
+                <div className="flex flex-wrap gap-4">
+                  <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=17784" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                    Страница мероприятия →
+                  </a>
+                  <a href="https://gzhi.govvrn.ru/storage/2023/02/01/voronezskaia.pdf" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
+                    Письмо →
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Проект 3 */}
-            <div className="p-8 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="flex items-start justify-between mb-4">
-                <div className="text-3xl">📋</div>
-                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                  2022
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">
-                II Всероссийский практический семинар
-              </h3>
-              <p className="text-sm text-slate-500 mb-4">
-                Москва · 31 марта — 1 апреля 2022
-              </p>
-              <p className="text-sm text-blue-400 font-semibold mb-3">
-                Роль: Координатор проекта
-              </p>
-              <ul className="space-y-2 text-sm text-slate-300 mb-4">
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Координация программы (10+ тем по тарифному регулированию)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Повышение квалификации от ведущих ВУЗов</span>
-                </li>
-              </ul>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=19199"
-                  target="_blank"
-                  className="inline-block text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors"
-                >
-                  Страница мероприятия →
-                </a>
-                <a
-                  href="https://vk.ru/wall-181018671_61"
-                  target="_blank"
-                  className="inline-block text-slate-400 hover:text-slate-300 text-sm font-semibold transition-colors"
-                >
-                  Информационное письмо →
-                </a>
+            <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">📋</div>
+              <div className="relative">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-4xl">📋</div>
+                  <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                    2022
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  II Всероссийский практический семинар
+                </h3>
+                <p className="text-sm text-slate-500 mb-4">
+                  Москва · 31 марта — 1 апреля 2022
+                </p>
+                <p className="text-sm text-blue-400 font-semibold mb-3">
+                  Роль: Координатор проекта
+                </p>
+                <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Координация программы (10+ тем по тарифному регулированию)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Повышение квалификации от ведущих ВУЗов</span>
+                  </li>
+                </ul>
+                <div className="flex flex-wrap gap-4">
+                  <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=19199" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                    Страница мероприятия →
+                  </a>
+                  <a href="https://vk.ru/wall-181018671_61" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
+                    Письмо →
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Проект 4 */}
-            <div className="p-8 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="flex items-start justify-between mb-4">
-                <div className="text-3xl">🌊</div>
-                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                  2022
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">
-                V Общероссийский летний съезд
-              </h3>
-              <p className="text-sm text-slate-500 mb-4">
-                Сочи · 8–10 июня 2022
-              </p>
-              <p className="text-sm text-blue-400 font-semibold mb-3">
-                Роль: Координатор проекта
-              </p>
-              <ul className="space-y-2 text-sm text-slate-300 mb-4">
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Координация 3 форматов: теория, открытый микрофон, бизнес-игра</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Работа с ФАС, ВУЗами и экспертами отрасли</span>
-                </li>
-              </ul>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=19368"
-                  target="_blank"
-                  className="inline-block text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors"
-                >
-                  Страница мероприятия →
-                </a>
-                <a
-                  href="https://tarif.gov39.ru/files/2022/Съезд_1-объединены.pdf"
-                  target="_blank"
-                  className="inline-block text-slate-400 hover:text-slate-300 text-sm font-semibold transition-colors"
-                >
-                  Программа съезда →
-                </a>
+            <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🌊</div>
+              <div className="relative">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-4xl">🌊</div>
+                  <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                    2022
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  V Общероссийский летний съезд
+                </h3>
+                <p className="text-sm text-slate-500 mb-4">
+                  Сочи · 8–10 июня 2022
+                </p>
+                <p className="text-sm text-blue-400 font-semibold mb-3">
+                  Роль: Координатор проекта
+                </p>
+                <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Координация 3 форматов: теория, открытый микрофон, бизнес-игра</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Работа с ФАС, ВУЗами и экспертами отрасли</span>
+                  </li>
+                </ul>
+                <div className="flex flex-wrap gap-4">
+                  <a href="https://upravlenie-gkh.ru/meropriyatiya/meropriyatie-detalno.php?ID=19368" target="_blank" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                    Страница мероприятия →
+                  </a>
+                  <a href="https://tarif.gov39.ru/files/2022/Съезд_1-объединены.pdf" target="_blank" className="text-slate-400 hover:text-slate-300 text-sm font-semibold">
+                    Программа →
+                  </a>
+                </div>
               </div>
             </div>
 
-            {/* Проект 5 — ВКР */}
-            <div className="p-8 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all lg:col-span-2">
-              <div className="flex items-start justify-between mb-4">
-                <div className="text-3xl">🎓</div>
-                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                  2025
-                </span>
+            {/* Проект 5 — ВКР (большая) */}
+            <div className="glass rounded-2xl p-6 md:p-8 md:col-span-2 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-[10rem] opacity-5 group-hover:opacity-10 transition-opacity">🎓</div>
+              <div className="relative">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-5xl">🎓</div>
+                  <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                    2025
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  ВКР: «Разработка рекламной кампании для Rutube»
+                </h3>
+                <p className="text-sm text-slate-500 mb-4">
+                  Учебный проект · Бакалавриат «Синергия»
+                </p>
+                <p className="text-sm text-blue-400 font-semibold mb-4">
+                  Роль: Автор и руководитель проекта
+                </p>
+                <ul className="space-y-2 text-sm text-slate-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Анализ рынка видеохостингов (Rutube, YouTube, VK Video)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Анкетирование 50+ респондентов, выявление проблем платформы</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5">▸</span>
+                    <span>Разработка рекламной кампании с бюджетом 20 млн руб., оценка ROI 1100%</span>
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">
-                ВКР: «Разработка рекламной кампании для Rutube»
-              </h3>
-              <p className="text-sm text-slate-500 mb-4">
-                Учебный проект · Бакалавриат «Синергия»
-              </p>
-              <p className="text-sm text-blue-400 font-semibold mb-3">
-                Роль: Автор и руководитель проекта
-              </p>
-              <ul className="space-y-2 text-sm text-slate-300 mb-4">
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Анализ рынка видеохостингов (Rutube, YouTube, VK Video)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Анкетирование 50+ респондентов, выявление проблем платформы</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-0.5">▸</span>
-                  <span>Разработка рекламной кампании с бюджетом 20 млн руб., оценка ROI 1100%</span>
-                </li>
-              </ul>
             </div>
 
           </div>
         </div>
       </section>
-            {/* EDUCATION */}
-      <section id="education" className="py-24 px-6 bg-slate-900">
+                  {/* EDUCATION */}
+      <section id="education" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
             Образование
           </h2>
           <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
             Академическая база и профессиональная переподготовка
           </p>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             
-            {/* Бакалавриат 2020–2025 */}
-            <div className="p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-3">
+            {/* Бакалавриат */}
+            <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">📚</div>
+              <div className="relative flex flex-wrap items-start justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="text-3xl">📚</div>
+                  <div className="text-4xl">📚</div>
                   <div>
                     <h3 className="text-xl font-bold text-white">
                       Бакалавриат «Реклама и связи с общественностью»
@@ -640,22 +731,23 @@ export default function Home() {
                     <p className="text-sm text-slate-400">
                       Московский финансово-промышленный университет «Синергия»
                     </p>
+                    <p className="text-sm text-slate-500 mt-1">
+                      Профиль: Интернет-маркетинг. ВКР: разработка рекламной кампании для Rutube
+                    </p>
                   </div>
                 </div>
                 <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full whitespace-nowrap">
                   2020–2025
                 </span>
               </div>
-              <p className="text-sm text-slate-400 mt-3 pl-14">
-                Профиль: Интернет-маркетинг. ВКР: разработка рекламной кампании для Rutube
-              </p>
             </div>
 
-            {/* Python-разработчик 2022–2024 */}
-            <div className="p-6 bg-slate-950 rounded-xl border border-blue-500/50 hover:border-blue-500 transition-all">
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-3">
+            {/* Python-разработчик */}
+            <div className="glass rounded-2xl p-6 border border-blue-500/40 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
+              <div className="relative flex flex-wrap items-start justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="text-3xl">💻</div>
+                  <div className="text-4xl">💻</div>
                   <div>
                     <h3 className="text-xl font-bold text-white">
                       Профессиональная переподготовка «Python-разработчик»
@@ -663,22 +755,23 @@ export default function Home() {
                     <p className="text-sm text-slate-400">
                       Яндекс.Практикум · 440 часов · квалификация «Программист»
                     </p>
+                    <p className="text-sm text-slate-500 mt-1">
+                      Модули: Python, SQL, ООП, Git, Django, API, алгоритмы, инфраструктура бэкенда
+                    </p>
                   </div>
                 </div>
                 <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full whitespace-nowrap">
                   2022–2024
                 </span>
               </div>
-              <p className="text-sm text-slate-400 mt-3 pl-14">
-                Модули: Python, SQL, ООП, Git, Django, API, алгоритмы, инфраструктура бэкенда
-              </p>
             </div>
 
             {/* YACOE 2023 */}
-            <div className="p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-3">
+            <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">🎤</div>
+              <div className="relative flex flex-wrap items-start justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="text-3xl">🎤</div>
+                  <div className="text-4xl">🎤</div>
                   <div>
                     <h3 className="text-xl font-bold text-white">
                       Конференция Яндекса YACOE 2023
@@ -694,11 +787,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Project manager 2025 */}
-            <div className="p-6 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500 transition-all">
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-3">
+            {/* Project manager */}
+            <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
+              <div className="relative flex flex-wrap items-start justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="text-3xl">📊</div>
+                  <div className="text-4xl">📊</div>
                   <div>
                     <h3 className="text-xl font-bold text-white">
                       Повышение квалификации «Project manager»
@@ -714,11 +808,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Магистратура 2025 — н.в. */}
-            <div className="p-6 bg-slate-950 rounded-xl border border-blue-500 hover:border-blue-400 transition-all">
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-3">
+            {/* Магистратура — текущая */}
+            <div className="glass rounded-2xl p-6 border-2 border-blue-500 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 text-8xl opacity-10 group-hover:opacity-20 transition-opacity">🎓</div>
+              <div className="relative flex flex-wrap items-start justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="text-3xl">🎓</div>
+                  <div className="text-4xl">🎓</div>
                   <div>
                     <h3 className="text-xl font-bold text-white">
                       Магистратура «Менеджмент проектов в сфере ИИ»
@@ -728,7 +823,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full whitespace-nowrap">
+                <span className="text-xs font-semibold text-blue-400 bg-blue-500/20 px-3 py-1 rounded-full whitespace-nowrap animate-pulse">
                   2025 — н.в.
                 </span>
               </div>
@@ -737,73 +832,101 @@ export default function Home() {
           </div>
         </div>
       </section>
-            {/* CERTIFICATES */}
-      <section id="certificates" className="py-24 px-6 bg-slate-950">
+                  {/* CERTIFICATES */}
+      <section id="certificates" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
             Сертификаты и дипломы
           </h2>
           <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
-            Подтверждённые документы об образовании
+            Кликните на карточку, чтобы открыть документ
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Диплом бакалавра */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all text-center">
-              <div className="text-5xl mb-4">📚</div>
-              <h3 className="text-base font-bold text-white mb-2">
-                Диплом бакалавра
-              </h3>
-              <p className="text-sm text-slate-400 mb-4">
-                Реклама и PR · Синергия
-              </p>
-              <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                2025
-              </span>
-            </div>
+            <a
+              href="/certificates/bachelor-diploma.pdf"
+              target="_blank"
+              className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all relative overflow-hidden group block"
+            >
+              <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">📚</div>
+              <div className="relative">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">📚</div>
+                <h3 className="text-base font-bold text-white mb-2">
+                  Диплом бакалавра
+                </h3>
+                <p className="text-sm text-slate-400 mb-4">
+                  Реклама и PR · Синергия
+                </p>
+                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                  2025
+                </span>
+              </div>
+            </a>
 
-            {/* Сертификат Python */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all text-center">
-              <div className="text-5xl mb-4">🐍</div>
-              <h3 className="text-base font-bold text-white mb-2">
-                Python-разработчик
-              </h3>
-              <p className="text-sm text-slate-400 mb-4">
-                Яндекс.Практикум · 440 часов
-              </p>
-              <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                2024
-              </span>
-            </div>
+            {/* Python-разработчик */}
+            <a
+              href="/certificates/python-diploma.pdf"
+              target="_blank"
+              className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all relative overflow-hidden group block"
+            >
+              <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">🐍</div>
+              <div className="relative">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🐍</div>
+                <h3 className="text-base font-bold text-white mb-2">
+                  Python-разработчик
+                </h3>
+                <p className="text-sm text-slate-400 mb-4">
+                  Яндекс.Практикум · 440 часов
+                </p>
+                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                  2024
+                </span>
+              </div>
+            </a>
 
-            {/* Сертификат YACOE */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all text-center">
-              <div className="text-5xl mb-4">🎤</div>
-              <h3 className="text-base font-bold text-white mb-2">
-                YACOE 2023
-              </h3>
-              <p className="text-sm text-slate-400 mb-4">
-                Конференция Яндекса об образовании
-              </p>
-              <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                2023
-              </span>
-            </div>
+            {/* YACOE 2023 */}
+            <a
+              href="/certificates/yacoe-2023.pdf"
+              target="_blank"
+              className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all relative overflow-hidden group block"
+            >
+              <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">🎤</div>
+              <div className="relative">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🎤</div>
+                <h3 className="text-base font-bold text-white mb-2">
+                  YACOE 2023
+                </h3>
+                <p className="text-sm text-slate-400 mb-4">
+                  Конференция Яндекса
+                </p>
+                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                  2023
+                </span>
+              </div>
+            </a>
 
-            {/* Сертификат Project manager */}
-            <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-blue-500 transition-all text-center">
-              <div className="text-5xl mb-4">📊</div>
-              <h3 className="text-base font-bold text-white mb-2">
-                Project manager
-              </h3>
-              <p className="text-sm text-slate-400 mb-4">
-                Повышение квалификации · Синергия
-              </p>
-              <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
-                2025
-              </span>
-            </div>
+            {/* Project manager */}
+            <a
+              href="/certificates/project-manager.pdf"
+              target="_blank"
+              className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all relative overflow-hidden group block"
+            >
+              <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
+              <div className="relative">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">📊</div>
+                <h3 className="text-base font-bold text-white mb-2">
+                  Project manager
+                </h3>
+                <p className="text-sm text-slate-400 mb-4">
+                  Синергия
+                </p>
+                <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                  2025
+                </span>
+              </div>
+            </a>
 
           </div>
         </div>
@@ -1034,6 +1157,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
