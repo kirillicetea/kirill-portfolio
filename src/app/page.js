@@ -21,31 +21,39 @@ export default function Home() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("loading");
+  e.preventDefault();
+  setStatus("loading");
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+  try {
+    const response = await fetch("https://formspree.io/f/moejjep", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        contact: formData.contact,
+        service: formData.service,
+        message: formData.message,
+      }),
+    });
+
+    if (response.ok) {
+      setStatus("success");
+      setFormData({
+        name: "",
+        contact: "",
+        service: "Проектное управление",
+        message: "",
       });
-
-      if (response.ok) {
-        setStatus("success");
-        setFormData({
-          name: "",
-          contact: "",
-          service: "Проектное управление",
-          message: "",
-        });
-      } else {
-        setStatus("error");
-      }
-    } catch (error) {
+    } else {
       setStatus("error");
     }
-  };
+  } catch (error) {
+    setStatus("error");
+  }
+};
 
   return (
     <div className="min-h-screen text-white relative">
