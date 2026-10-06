@@ -134,3 +134,18 @@ html {
     cursor: none !important;
   }
 }
+
+/* Фикс обрезки букв в заголовках (У, Д, Ц) */
+h1, h2, h3 {
+  padding-bottom: 0.15em;
+  line-height: 1.15;
+}
+
+/* Отключаем blur на мобильных для производительности */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.04);
+  }
+}

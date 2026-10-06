@@ -6,15 +6,18 @@ export default function ParticlesBackground() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  // Отключаем на мобильных для производительности
+  if (window.innerWidth < 768) return;
+  
+  const canvas = canvasRef.current;
+  if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
     let animationFrameId;
 
     // Настройки
     const particles = [];
-    const particleCount = 70;
+    const particleCount = window.innerWidth < 1024 ? 30 : 70;
     const connectionDistance = 150;
     const mouseDistance = 180;
 

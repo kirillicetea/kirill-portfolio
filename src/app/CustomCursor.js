@@ -73,27 +73,27 @@ export default function CustomCursor() {
         }}
       />
       
-      {/* Точка в центре */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999]"
-        animate={{
-          x: mousePosition.x - 3,
-          y: mousePosition.y - 3,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 1000,
-          damping: 50,
-        }}
-        style={{
-          width: 6,
-          height: 6,
-          borderRadius: "50%",
-          background: "#3b82f6",
-          boxShadow: "0 0 10px rgba(59, 130, 246, 0.8)",
-          opacity: isVisible ? 1 : 0,
-        }}
-      />
+      {/* Точка в центре — маленькая и прозрачная */}
+<motion.div
+  className="fixed top-0 left-0 pointer-events-none z-[9999]"
+  animate={{
+    x: mousePosition.x - 1,
+    y: mousePosition.y - 1,
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 1000,
+    damping: 50,
+  }}
+  style={{
+    width: 2,
+    height: 2,
+    borderRadius: "50%",
+    background: "rgba(59, 130, 246, 0.5)",
+    boxShadow: "0 0 6px rgba(59, 130, 246, 0.4)",
+    opacity: isVisible ? 0.6 : 0,
+  }}
+/>
     </>
   );
 }

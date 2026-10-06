@@ -5,6 +5,7 @@ import FadeIn from "./FadeIn";
 import AnimatedCounter from "./AnimatedCounter";
 import MagneticButton from "./MagneticButton";
 import TiltCard from "./TiltCard";
+import { FaTelegramPlane, FaGithub, FaEnvelope, FaGraduationCap, FaLaptopCode, FaMicrophone, FaChartBar, FaBook, FaPython, FaBriefcase, FaCity, FaBullseye, FaComments, FaCog, FaBrain, FaRocket, FaBolt, FaClipboardList, FaWater } from "react-icons/fa";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -83,9 +84,17 @@ export default function Home() {
 </FadeIn>
 
 <FadeIn delay={0.5}>
-  <p className="text-sm md:text-base text-blue-400 font-semibold mb-4">
-    🟢 Открыт к junior-позициям и стажировкам
-  </p>
+  <div className="flex items-center justify-center gap-3 mb-4">
+    <span className="relative flex h-3 w-3">
+      {/* Пульсирующее кольцо */}
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+      {/* Точка */}
+      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.8)]"></span>
+    </span>
+    <p className="text-sm md:text-base text-green-400 font-semibold">
+      Открыт к junior-позициям и стажировкам
+    </p>
+  </div>
 </FadeIn>
 
           {/* Краткое описание */}
@@ -101,28 +110,31 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 justify-center">
               <MagneticButton
   href="#services"
-  className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-colors shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
+  className="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-colors shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
 >
-  🚀 Услуги
+  <FaRocket />
+  Услуги
 </MagneticButton>
 <MagneticButton
   href="#contact"
-  className="inline-block px-8 py-3 glass rounded-lg font-semibold text-white"
+  className="inline-flex items-center gap-2 px-8 py-3 glass rounded-lg font-semibold text-white"
 >
-  💬 Связаться
+  <FaComments />
+  Связаться
 </MagneticButton>
 <MagneticButton
   href="https://t.me/kirill_icetea"
-  className="inline-block px-8 py-3 glass rounded-lg font-semibold text-white"
+  className="inline-flex items-center gap-2 px-8 py-3 glass rounded-lg font-semibold text-white"
 >
-  ✈️ Telegram
+  <FaTelegramPlane />
+  Telegram
 </MagneticButton>
             </div>
           </FadeIn>
 
         </div>
       </section>
-                        {/* ABOUT */}
+                              {/* ABOUT */}
       <section id="about" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -143,7 +155,9 @@ export default function Home() {
               <FadeIn delay={0.3}>
                 <div className="glass rounded-2xl p-8">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="text-3xl">💼</div>
+                    <div className="text-3xl text-blue-400">
+                      <FaBriefcase />
+                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-white mb-2">
                         4 года в «Синергии»
@@ -161,7 +175,9 @@ export default function Home() {
               <FadeIn delay={0.4}>
                 <div className="glass rounded-2xl p-8">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="text-3xl">🏛️</div>
+                    <div className="text-3xl text-blue-400">
+                      <FaCity />
+                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-white mb-2">
                         Координация федеральных проектов
@@ -179,7 +195,9 @@ export default function Home() {
               <FadeIn delay={0.5}>
                 <div className="glass rounded-2xl p-8">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="text-3xl">🎓</div>
+                    <div className="text-3xl text-blue-400">
+                      <FaGraduationCap />
+                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-white mb-2">
                         Учусь и развиваюсь
@@ -246,7 +264,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-                              {/* SKILLS */}
+                                    {/* SKILLS */}
       <section id="skills" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -262,113 +280,107 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {/* Большая карточка — Управление проектами */}
+            {/* Управление проектами */}
             <FadeIn delay={0.3} className="md:col-span-2">
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
-                  <div className="relative">
-                    <div className="text-5xl mb-4">📊</div>
-                    <h3 className="text-2xl font-bold mb-3 text-white">Управление проектами</h3>
-                    <p className="text-slate-400 leading-relaxed max-w-lg">
-                      Agile / Scrum (база), ведение трекеров, декомпозиция задач,
-                      контроль сроков и качества. Применяю в текущих проектах.
-                    </p>
+              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-5xl mb-4 text-blue-400">
+                    <FaChartBar />
                   </div>
+                  <h3 className="text-2xl font-bold mb-3 text-white">Управление проектами</h3>
+                  <p className="text-slate-400 leading-relaxed max-w-lg">
+                    Agile / Scrum (база), ведение трекеров, декомпозиция задач,
+                    контроль сроков и качества. Применяю в текущих проектах.
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             {/* Клиентский менеджмент */}
             <FadeIn delay={0.4}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-4">💬</div>
-                    <h3 className="text-xl font-bold mb-3 text-white">Клиентский менеджмент</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      Переговоры, КП, презентации, полный цикл документооборота, программы лояльности.
-                    </p>
+              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-4xl mb-4 text-blue-400">
+                    <FaComments />
                   </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">Клиентский менеджмент</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Переговоры, КП, презентации, полный цикл документооборота, программы лояльности.
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             {/* Операционное управление */}
             <FadeIn delay={0.5}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">⚙️</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-4">⚙️</div>
-                    <h3 className="text-xl font-bold mb-3 text-white">Операционное управление</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      Построение процессов с нуля, автоматизация отчётности, регламенты, координация отделов.
-                    </p>
+              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-4xl mb-4 text-blue-400">
+                    <FaCog />
                   </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">Операционное управление</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Построение процессов с нуля, автоматизация отчётности, регламенты, координация отделов.
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             {/* Event-менеджмент */}
             <FadeIn delay={0.6}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-4">🎯</div>
-                    <h3 className="text-xl font-bold mb-3 text-white">Event-менеджмент</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      Организация федеральных мероприятий, работа со спикерами, логистика, бюджет.
-                    </p>
+              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-4xl mb-4 text-blue-400">
+                    <FaBullseye />
                   </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">Event-менеджмент</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Организация федеральных мероприятий, работа со спикерами, логистика, бюджет.
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             {/* Техническая база */}
             <FadeIn delay={0.7} className="md:col-span-2">
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
-                  <div className="relative">
-                    <div className="text-5xl mb-4">💻</div>
-                    <h3 className="text-2xl font-bold mb-3 text-white">Техническая база</h3>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {["Python", "SQL", "Docker", "CI/CD", "Linux", "Git", "Django", "API"].map((tech) => (
-                        <span key={tech} className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-blue-300">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-5xl mb-4 text-blue-400">
+                    <FaLaptopCode />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-white">Техническая база</h3>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {["Python", "SQL", "Docker", "CI/CD", "Linux", "Git", "Django", "API"].map((tech) => (
+                      <span key={tech} className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-blue-300">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             {/* ИИ и данные */}
             <FadeIn delay={0.8} className="md:col-span-3">
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🤖</div>
-                  <div className="relative flex items-start gap-6">
-                    <div className="text-5xl">🤖</div>
-                    <div>
-                      <h3 className="text-2xl font-bold mb-3 text-white">ИИ и данные</h3>
-                      <p className="text-slate-400 leading-relaxed">
-                        Участие во внедрении GPT-3/4, понимание нейросетей, работа с ТЗ. Магистратура «Менеджмент проектов в сфере искусственного интеллекта».
-                      </p>
-                    </div>
+              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative flex items-start gap-6">
+                  <div className="text-5xl text-blue-400">
+                    <FaBrain />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-3 text-white">ИИ и данные</h3>
+                    <p className="text-slate-400 leading-relaxed">
+                      Участие во внедрении GPT-3/4, понимание нейросетей, работа с ТЗ. Магистратура «Менеджмент проектов в сфере искусственного интеллекта».
+                    </p>
                   </div>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
           </div>
         </div>
       </section>
-                              {/* SERVICES */}
+                                    {/* SERVICES */}
       <section id="services" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -386,108 +398,103 @@ export default function Home() {
             
             {/* Главная услуга — Поддержка проектов (большая) */}
             <FadeIn delay={0.3} className="lg:col-span-2 lg:row-span-2">
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group flex flex-col">
-                  <div className="absolute top-0 right-0 text-[12rem] opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
-                  <div className="relative flex-1 flex flex-col">
-                    <div className="text-5xl mb-4">📊</div>
-                    <h3 className="text-3xl font-bold mb-4 text-white">Поддержка проектов</h3>
-                    <p className="text-slate-300 text-lg leading-relaxed mb-6 flex-1">
-                      Помогаю проектным командам: веду документацию, координирую задачи,
-                      контролирую сроки, готовлю отчёты. Работаю в Agile/Scrum,
-                      понимаю техническую сторону (Python, SQL, Docker).
-                    </p>
-                    <p className="text-sm text-slate-400 mb-4">
-                      <span className="text-blue-400 font-semibold">Для кого:</span> команды, стартапы, малый бизнес
-                    </p>
-                    <a href="#contact" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold transition-colors group-hover:gap-3">
-                      Обсудить задачи <span>→</span>
-                    </a>
+              <div className="glass rounded-2xl p-8 h-full hover:border-blue-500 transition-all relative overflow-hidden group flex flex-col">
+                <div className="relative flex-1 flex flex-col">
+                  <div className="text-5xl mb-4 text-blue-400">
+                    <FaChartBar />
                   </div>
+                  <h3 className="text-3xl font-bold mb-4 text-white">Поддержка проектов</h3>
+                  <p className="text-slate-300 text-lg leading-relaxed mb-6 flex-1">
+                    Помогаю проектным командам: веду документацию, координирую задачи,
+                    контролирую сроки, готовлю отчёты. Работаю в Agile/Scrum,
+                    понимаю техническую сторону (Python, SQL, Docker).
+                  </p>
+                  <p className="text-sm text-slate-400 mb-4">
+                    <span className="text-blue-400 font-semibold">Для кого:</span> команды, стартапы, малый бизнес
+                  </p>
+                  <a href="#contact" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold transition-colors group-hover:gap-3">
+                    Обсудить задачи <span>→</span>
+                  </a>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             {/* Коучинг */}
             <FadeIn delay={0.4}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">🎯</div>
-                    <h3 className="text-xl font-bold mb-2 text-white">Коучинг и наставничество</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                      Помогаю начинающим специалистам: цели, навыки, разбор кейсов, план роста.
-                    </p>
-                    <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                      Записаться →
-                    </a>
+              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaBullseye />
                   </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Коучинг и наставничество</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                    Помогаю начинающим специалистам: цели, навыки, разбор кейсов, план роста.
+                  </p>
+                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                    Записаться →
+                  </a>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             {/* Мотивация */}
             <FadeIn delay={0.5}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎤</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">🎤</div>
-                    <h3 className="text-xl font-bold mb-2 text-white">Мотивация и выступления</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                      Лекции, мастер-классы. Делюсь опытом: карьера, IT-переход, смена профессии.
-                    </p>
-                    <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                      Пригласить →
-                    </a>
+              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaMicrophone />
                   </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Мотивация и выступления</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                    Лекции, мастер-классы. Делюсь опытом: карьера, IT-переход, смена профессии.
+                  </p>
+                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                    Пригласить →
+                  </a>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             {/* Клиентский сервис */}
             <FadeIn delay={0.6}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">💬</div>
-                    <h3 className="text-xl font-bold mb-2 text-white">Клиентский сервис</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                      Построение сервиса, работа с возражениями, удержание, документооборот.
-                    </p>
-                    <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                      Заказать →
-                    </a>
+              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaComments />
                   </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Клиентский сервис</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                    Построение сервиса, работа с возражениями, удержание, документооборот.
+                  </p>
+                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                    Заказать →
+                  </a>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             {/* Менторство */}
             <FadeIn delay={0.7}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🚀</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">🚀</div>
-                    <h3 className="text-xl font-bold mb-2 text-white">Менторство в IT-переходе</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                      Помогаю перейти в IT / PM: разбор целей, план обучения, поддержка.
-                    </p>
-                    <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                      Начать путь →
-                    </a>
+              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaRocket />
                   </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Менторство в IT-переходе</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                    Помогаю перейти в IT / PM: разбор целей, план обучения, поддержка.
+                  </p>
+                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                    Начать путь →
+                  </a>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
           </div>
         </div>
       </section>
-            {/* MY STRENGTHS */}
+                  {/* MY STRENGTHS */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -504,99 +511,93 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <FadeIn delay={0.3}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">⚡</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">⚡</div>
-                    <h3 className="text-lg font-bold mb-2 text-white">Быстро включаюсь</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      За 4 года в «Синергии» привык разбираться в новых процессах с первой недели.
-                    </p>
+              <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaBolt />
                   </div>
+                  <h3 className="text-lg font-bold mb-2 text-white">Быстро включаюсь</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    За 4 года в «Синергии» привык разбираться в новых процессах с первой недели.
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             <FadeIn delay={0.4}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🎯</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">🎯</div>
-                    <h3 className="text-lg font-bold mb-2 text-white">Довожу до конца</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      Координировал 4 федеральных мероприятия. Ни один проект не сорвался по срокам.
-                    </p>
+              <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaBullseye />
                   </div>
+                  <h3 className="text-lg font-bold mb-2 text-white">Довожу до конца</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Координировал 4 федеральных мероприятия. Ни один проект не сорвался по срокам.
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             <FadeIn delay={0.5}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🧠</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">🧠</div>
-                    <h3 className="text-lg font-bold mb-2 text-white">Понимаю техсторону</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      Прошёл Python-курс (440 ч). Понимаю код, Docker, CI/CD — говорю с разработчиками на одном языке.
-                    </p>
+              <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaBrain />
                   </div>
+                  <h3 className="text-lg font-bold mb-2 text-white">Понимаю техсторону</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Прошёл Python-курс (440 ч). Понимаю код, Docker, CI/CD — говорю с разработчиками на одном языке.
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             <FadeIn delay={0.6}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">💬</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">💬</div>
-                    <h3 className="text-lg font-bold mb-2 text-white">Клиентский опыт</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      4 года переговоров, работы с возражениями, документацией и ожиданиями.
-                    </p>
+              <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaComments />
                   </div>
+                  <h3 className="text-lg font-bold mb-2 text-white">Клиентский опыт</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    4 года переговоров, работы с возражениями, документацией и ожиданиями.
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             <FadeIn delay={0.7}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">📚</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">📚</div>
-                    <h3 className="text-lg font-bold mb-2 text-white">Учусь параллельно</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      Магистратура по AI-проектам + работа + курсы. Умею учиться, не бросая дело.
-                    </p>
+              <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaBook />
                   </div>
+                  <h3 className="text-lg font-bold mb-2 text-white">Учусь параллельно</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Магистратура по AI-проектам + работа + курсы. Умею учиться, не бросая дело.
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
             <FadeIn delay={0.8}>
-              <TiltCard className="h-full">
-                <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-7xl opacity-5 group-hover:opacity-10 transition-opacity">🚀</div>
-                  <div className="relative">
-                    <div className="text-4xl mb-3">🚀</div>
-                    <h3 className="text-lg font-bold mb-2 text-white">Мотивация</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      Меняю профессию осознанно. Хочу расти в PM и делать это долго. Не «на год».
-                    </p>
+              <div className="glass rounded-2xl p-6 h-full hover:border-blue-500 transition-all relative overflow-hidden group">
+                <div className="relative">
+                  <div className="text-4xl mb-3 text-blue-400">
+                    <FaRocket />
                   </div>
+                  <h3 className="text-lg font-bold mb-2 text-white">Мотивация</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Меняю профессию осознанно. Хочу расти в PM и делать это долго. Не «на год».
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </FadeIn>
 
           </div>
         </div>
       </section>
-                        {/* EXPERIENCE */}
+                              {/* EXPERIENCE */}
       <section id="experience" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
@@ -626,7 +627,9 @@ export default function Home() {
                   </div>
                   
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="text-3xl">🏛️</div>
+                    <div className="text-3xl text-blue-400">
+                      <FaCity />
+                    </div>
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-1">
                         Менеджер 1 грейда, Event-менеджер
@@ -673,7 +676,9 @@ export default function Home() {
                   </div>
                   
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="text-3xl">🎓</div>
+                    <div className="text-3xl text-blue-400">
+                      <FaGraduationCap />
+                    </div>
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-1">
                         Старший аккаунт-менеджер
@@ -709,7 +714,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-                              {/* PROJECTS */}
+                                    {/* PROJECTS */}
       <section id="projects" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -729,10 +734,11 @@ export default function Home() {
             <FadeIn delay={0.3}>
               <TiltCard className="h-full">
                 <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🏛️</div>
                   <div className="relative">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="text-4xl">🏛️</div>
+                      <div className="text-4xl text-blue-400">
+                        <FaCity />
+                      </div>
                       <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
                         2021
                       </span>
@@ -773,10 +779,11 @@ export default function Home() {
             <FadeIn delay={0.4}>
               <TiltCard className="h-full">
                 <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
                   <div className="relative">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="text-4xl">💻</div>
+                      <div className="text-4xl text-blue-400">
+                        <FaLaptopCode />
+                      </div>
                       <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
                         2021
                       </span>
@@ -817,10 +824,11 @@ export default function Home() {
             <FadeIn delay={0.5}>
               <TiltCard className="h-full">
                 <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">📋</div>
                   <div className="relative">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="text-4xl">📋</div>
+                      <div className="text-4xl text-blue-400">
+                        <FaClipboardList />
+                      </div>
                       <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
                         2022
                       </span>
@@ -861,10 +869,11 @@ export default function Home() {
             <FadeIn delay={0.6}>
               <TiltCard className="h-full">
                 <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                  <div className="absolute top-0 right-0 text-9xl opacity-5 group-hover:opacity-10 transition-opacity">🌊</div>
                   <div className="relative">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="text-4xl">🌊</div>
+                      <div className="text-4xl text-blue-400">
+                        <FaWater />
+                      </div>
                       <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
                         2022
                       </span>
@@ -901,14 +910,15 @@ export default function Home() {
               </TiltCard>
             </FadeIn>
 
-            {/* Проект 5 — ВКР (большая) */}
+            {/* Проект 5 — ВКР */}
             <FadeIn delay={0.7} className="md:col-span-2">
               <TiltCard className="h-full">
                 <div className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 text-[10rem] opacity-5 group-hover:opacity-10 transition-opacity">🎓</div>
                   <div className="relative">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="text-5xl">🎓</div>
+                      <div className="text-5xl text-blue-400">
+                        <FaGraduationCap />
+                      </div>
                       <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
                         2025
                       </span>
@@ -917,10 +927,10 @@ export default function Home() {
                       ВКР: «Разработка рекламной кампании для Rutube»
                     </h3>
                     <p className="text-sm text-slate-500 mb-4">
-                      Учебный проект · Бакалавриат «Синергия»
+                      Выпускная квалификационная работа · Бакалавриат «Интернет-маркетинг», Синергия
                     </p>
                     <p className="text-sm text-blue-400 font-semibold mb-4">
-                      Роль: Автор и руководитель проекта
+                      Роль: Автор исследования
                     </p>
                     <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-start gap-2">
@@ -944,7 +954,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-                        {/* EDUCATION */}
+                              {/* EDUCATION */}
       <section id="education" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
@@ -963,10 +973,11 @@ export default function Home() {
             {/* Бакалавриат */}
             <FadeIn delay={0.3}>
               <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">📚</div>
                 <div className="relative flex flex-wrap items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="text-4xl">📚</div>
+                    <div className="text-4xl text-blue-400">
+                      <FaGraduationCap />
+                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">
                         Бакалавриат «Реклама и связи с общественностью»
@@ -989,10 +1000,11 @@ export default function Home() {
             {/* Python-разработчик */}
             <FadeIn delay={0.4}>
               <div className="glass rounded-2xl p-6 border border-blue-500/40 hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">💻</div>
                 <div className="relative flex flex-wrap items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="text-4xl">💻</div>
+                    <div className="text-4xl text-blue-400">
+                      <FaLaptopCode />
+                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">
                         Профессиональная переподготовка «Python-разработчик»
@@ -1015,10 +1027,11 @@ export default function Home() {
             {/* YACOE 2023 */}
             <FadeIn delay={0.5}>
               <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">🎤</div>
                 <div className="relative flex flex-wrap items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="text-4xl">🎤</div>
+                    <div className="text-4xl text-blue-400">
+                      <FaMicrophone />
+                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">
                         Конференция Яндекса YACOE 2023
@@ -1038,10 +1051,11 @@ export default function Home() {
             {/* Project manager */}
             <FadeIn delay={0.6}>
               <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
                 <div className="relative flex flex-wrap items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="text-4xl">📊</div>
+                    <div className="text-4xl text-blue-400">
+                      <FaChartBar />
+                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">
                         Повышение квалификации «Project manager»
@@ -1061,10 +1075,11 @@ export default function Home() {
             {/* Магистратура — текущая */}
             <FadeIn delay={0.7}>
               <div className="glass rounded-2xl p-6 border-2 border-blue-500 transition-all relative overflow-hidden group">
-                <div className="absolute top-0 right-0 text-8xl opacity-10 group-hover:opacity-20 transition-opacity">🎓</div>
                 <div className="relative flex flex-wrap items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="text-4xl">🎓</div>
+                    <div className="text-4xl text-blue-400">
+                      <FaGraduationCap />
+                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">
                         Магистратура «Менеджмент проектов в сфере ИИ»
@@ -1084,7 +1099,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-                        {/* CERTIFICATES */}
+                              {/* CERTIFICATES */}
       <section id="certificates" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -1107,9 +1122,10 @@ export default function Home() {
                 target="_blank"
                 className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all relative overflow-hidden group block h-full"
               >
-                <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">📚</div>
                 <div className="relative">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">📚</div>
+                  <div className="text-5xl mb-4 text-blue-400 group-hover:scale-110 transition-transform flex justify-center">
+                    <FaGraduationCap />
+                  </div>
                   <h3 className="text-base font-bold text-white mb-2">
                     Диплом бакалавра
                   </h3>
@@ -1130,9 +1146,10 @@ export default function Home() {
                 target="_blank"
                 className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all relative overflow-hidden group block h-full"
               >
-                <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">🐍</div>
                 <div className="relative">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🐍</div>
+                  <div className="text-5xl mb-4 text-blue-400 group-hover:scale-110 transition-transform flex justify-center">
+                    <FaPython />
+                  </div>
                   <h3 className="text-base font-bold text-white mb-2">
                     Python-разработчик
                   </h3>
@@ -1153,9 +1170,10 @@ export default function Home() {
                 target="_blank"
                 className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all relative overflow-hidden group block h-full"
               >
-                <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">🎤</div>
                 <div className="relative">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🎤</div>
+                  <div className="text-5xl mb-4 text-blue-400 group-hover:scale-110 transition-transform flex justify-center">
+                    <FaMicrophone />
+                  </div>
                   <h3 className="text-base font-bold text-white mb-2">
                     YACOE 2023
                   </h3>
@@ -1176,9 +1194,10 @@ export default function Home() {
                 target="_blank"
                 className="glass rounded-2xl p-6 text-center hover:border-blue-500 transition-all relative overflow-hidden group block h-full"
               >
-                <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">📊</div>
                 <div className="relative">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">📊</div>
+                  <div className="text-5xl mb-4 text-blue-400 group-hover:scale-110 transition-transform flex justify-center">
+                    <FaChartBar />
+                  </div>
                   <h3 className="text-base font-bold text-white mb-2">
                     Project manager
                   </h3>
@@ -1195,15 +1214,16 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* OPEN TO */}
+            {/* OPEN TO */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
             <div className="glass rounded-2xl p-8 md:p-10 border border-blue-500/30 relative overflow-hidden">
-              <div className="absolute top-0 right-0 text-[12rem] opacity-5">🎯</div>
               <div className="relative">
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="text-4xl">🎯</span>
+                  <div className="text-4xl text-blue-400">
+                    <FaBullseye />
+                  </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-space-grotesk)]">
                     Открыт к предложениям
                   </h3>
@@ -1211,7 +1231,9 @@ export default function Home() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">💼</span>
+                    <div className="text-2xl text-blue-400">
+                      <FaBriefcase />
+                    </div>
                     <div>
                       <p className="text-white font-semibold mb-1">Junior PM</p>
                       <p className="text-sm text-slate-400">Полная занятость, Москва / удалёнка</p>
@@ -1219,7 +1241,9 @@ export default function Home() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">🎓</span>
+                    <div className="text-2xl text-blue-400">
+                      <FaGraduationCap />
+                    </div>
                     <div>
                       <p className="text-white font-semibold mb-1">Стажировка</p>
                       <p className="text-sm text-slate-400">В проектном управлении / IT</p>
@@ -1227,7 +1251,9 @@ export default function Home() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">⚡</span>
+                    <div className="text-2xl text-blue-400">
+                      <FaBolt />
+                    </div>
                     <div>
                       <p className="text-white font-semibold mb-1">Part-time</p>
                       <p className="text-sm text-slate-400">Координация проектов, поддержка команд</p>
@@ -1239,7 +1265,7 @@ export default function Home() {
           </FadeIn>
         </div>
       </section>
-                  {/* CONTACT */}
+                        {/* CONTACT */}
       <section id="contact" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
@@ -1260,26 +1286,66 @@ export default function Home() {
               <div className="space-y-4 h-full">
                 <h3 className="text-xl font-bold text-white mb-6">Прямые контакты</h3>
 
+                {/* Telegram с QR */}
                 <a
-                  href="https://t.me/kirill_icetea"
-                  target="_blank"
-                  className="glass rounded-2xl p-4 flex items-center gap-4 hover:border-blue-500 transition-all group"
-                >
-                  <div className="text-3xl">✈️</div>
-                  <div>
-                    <p className="text-sm text-slate-400">Telegram (быстрее всего)</p>
-                    <p className="text-white font-semibold group-hover:text-blue-400 transition-colors">
-                      @kirill_icetea
-                    </p>
-                  </div>
-                </a>
+  href="https://t.me/kirill_icetea"
+  target="_blank"
+  className="glass rounded-2xl p-4 flex items-center gap-4 hover:border-blue-500 transition-all group"
+>
+  <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-white p-1 transition-all duration-300 group-hover:w-32 group-hover:h-32 group-hover:scale-110 group-hover:z-10 group-hover:shadow-2xl group-hover:shadow-blue-500/50 relative">
+    <Image
+      src="/qr/qr-telegram.png"
+      alt="QR Telegram"
+      width={128}
+      height={128}
+      className="w-full h-full object-contain"
+    />
+  </div>
+  <div className="flex-shrink-0">
+    <FaTelegramPlane className="text-3xl text-blue-400" />
+  </div>
+  <div className="flex-1">
+    <p className="text-sm text-slate-400">Telegram (быстрее всего)</p>
+    <p className="text-white font-semibold group-hover:text-blue-400 transition-colors">
+      @kirill_icetea
+    </p>
+  </div>
+</a>
 
+                <a
+  href="https://max.ru/+79959962239"
+  target="_blank"
+  className="glass rounded-2xl p-4 flex items-center gap-4 hover:border-blue-500 transition-all group"
+>
+  <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-white p-1 transition-all duration-300 group-hover:w-32 group-hover:h-32 group-hover:scale-110 group-hover:z-10 group-hover:shadow-2xl group-hover:shadow-blue-500/50 relative">
+    <Image
+      src="/qr/qr-max.png"
+      alt="QR MAX"
+      width={128}
+      height={128}
+      className="w-full h-full object-contain"
+    />
+  </div>
+  <div className="flex-shrink-0">
+    <span className="text-3xl text-blue-400 font-bold">M</span>
+  </div>
+  <div className="flex-1">
+    <p className="text-sm text-slate-400">MAX</p>
+    <p className="text-white font-semibold group-hover:text-blue-400 transition-colors">
+      +7 (995) 996-22-39
+    </p>
+  </div>
+</a>
+
+                {/* Email */}
                 <a
                   href="mailto:kirilltesis@yandex.ru"
                   className="glass rounded-2xl p-4 flex items-center gap-4 hover:border-blue-500 transition-all group"
                 >
-                  <div className="text-3xl">📧</div>
-                  <div>
+                  <div className="flex-shrink-0 w-16 h-16 rounded-lg flex items-center justify-center">
+                    <FaEnvelope className="text-4xl text-blue-400" />
+                  </div>
+                  <div className="flex-1">
                     <p className="text-sm text-slate-400">Email</p>
                     <p className="text-white font-semibold group-hover:text-blue-400 transition-colors">
                       kirilltesis@yandex.ru
@@ -1287,32 +1353,23 @@ export default function Home() {
                   </div>
                 </a>
 
-                <a
-                  href="tel:+79959962239"
-                  className="glass rounded-2xl p-4 flex items-center gap-4 hover:border-blue-500 transition-all group"
-                >
-                  <div className="text-3xl">📱</div>
-                  <div>
-                    <p className="text-sm text-slate-400">Телефон</p>
-                    <p className="text-white font-semibold group-hover:text-blue-400 transition-colors">
-                      +7 (995) 996-22-39
-                    </p>
-                  </div>
-                </a>
-
+                {/* GitHub */}
                 <a
                   href="https://github.com/kirillicetea"
                   target="_blank"
                   className="glass rounded-2xl p-4 flex items-center gap-4 hover:border-blue-500 transition-all group"
                 >
-                  <div className="text-3xl">💻</div>
-                  <div>
+                  <div className="flex-shrink-0 w-16 h-16 rounded-lg flex items-center justify-center">
+                    <FaGithub className="text-4xl text-blue-400" />
+                  </div>
+                  <div className="flex-1">
                     <p className="text-sm text-slate-400">GitHub</p>
                     <p className="text-white font-semibold group-hover:text-blue-400 transition-colors">
                       github.com/kirillicetea
                     </p>
                   </div>
                 </a>
+
               </div>
             </FadeIn>
 
@@ -1321,7 +1378,7 @@ export default function Home() {
               <div className="glass rounded-2xl p-8 h-full">
                 <h3 className="text-xl font-bold text-white mb-6">Оставить заявку</h3>
 
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label className="block text-sm text-slate-400 mb-2">Ваше имя *</label>
                     <input
@@ -1456,33 +1513,36 @@ export default function Home() {
                 Контакты
               </h4>
               <ul className="space-y-2">
-                <li>
-                  <a
-                    href="https://t.me/kirill_icetea"
-                    target="_blank"
-                    className="text-sm text-slate-400 hover:text-blue-400 transition-colors"
-                  >
-                    ✈️ Telegram
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="mailto:kirilltesis@yandex.ru"
-                    className="text-sm text-slate-400 hover:text-blue-400 transition-colors"
-                  >
-                    📧 kirilltesis@yandex.ru
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/kirillicetea"
-                    target="_blank"
-                    className="text-sm text-slate-400 hover:text-blue-400 transition-colors"
-                  >
-                    💻 GitHub
-                  </a>
-                </li>
-              </ul>
+  <li>
+    <a
+      href="https://t.me/kirill_icetea"
+      target="_blank"
+      className="text-sm text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center gap-2"
+    >
+      <FaTelegramPlane className="text-blue-400" />
+      Telegram
+    </a>
+  </li>
+  <li>
+    <a
+      href="mailto:kirilltesis@yandex.ru"
+      className="text-sm text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center gap-2"
+    >
+      <FaEnvelope className="text-blue-400" />
+      kirilltesis@yandex.ru
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://github.com/kirillicetea"
+      target="_blank"
+      className="text-sm text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center gap-2"
+    >
+      <FaGithub className="text-blue-400" />
+      GitHub
+    </a>
+  </li>
+</ul>
             </div>
 
           </div>
@@ -1493,8 +1553,8 @@ export default function Home() {
               © 2026 Кирилл Мирончук. Все права защищены.
             </p>
             <p className="text-sm text-slate-500">
-              Сделано с ❤️ на Next.js
-            </p>
+  Сделано с <span className="text-red-400">❤</span> на Next.js
+</p>
           </div>
         </div>
       </footer>
