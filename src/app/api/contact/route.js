@@ -39,11 +39,12 @@ export async function POST(request) {
     const response = await fetch(url, { method: "POST" });
     const data = await response.json();
 
-    console.log("VK response:", data);
+    console.log("VK response FULL:", JSON.stringify(data, null, 2));
 
     if (data.error) {
-      throw new Error(data.error.error_msg || "VK API error");
-    }
+  console.error("VK ERROR DETAILS:", JSON.stringify(data.error, null, 2));
+  throw new Error(data.error.error_msg || "VK API error");
+}
 
     return NextResponse.json({ success: true });
   } catch (error) {
