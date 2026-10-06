@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
 
 export async function POST(request) {
   try {
@@ -13,45 +12,38 @@ export async function POST(request) {
       );
     }
 
-    const emailUser = process.env.EMAIL_USER;
-    const emailPass = process.env.EMAIL_PASSWORD;
+    const vkToken = process.env.VK_TOKEN;
+    const vkPeerId = process.env.VK_PEER_ID;
 
-    if (!emailUser || !emailPass) {
+    if (!vkToken || !vkPeerId) {
       return NextResponse.json(
         { error: "Сервер не настроен" },
         { status: 500 }
       );
     }
 
-    const transporter = nodemailer.createTransport({
-  host: "smtp.yandex.ru",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  auth: {
-    user: emailUser,
-    pass: emailPass,
-  },
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 10000,
-});
+    const text = `🔔 Новая заявка с сайта\n\n👤 Имя: ${name}\n📞 Контакт: ${contact}\n🎯 Услуга: ${service || "не указана"}\n\n💬 Сообщение:\n${message}`;
 
-    const htmlContent = `
-      <h2>🔔 Новая заявка с сайта</h2>
-      <p><strong>👤 Имя:</strong> ${name}</p>
-      <p><strong>📞 Контакт:</strong> ${contact}</p>
-      <p><strong>🎯 Услуга:</strong> ${service || "не указана"}</p>
-      <p><strong>💬 Сообщение:</strong></p>
-      <p>${message}</p>
-    `;
-
-    await transporter.sendMail({
-      from: `"Сайт kirillmironchuk.ru" <${emailUser}>`,
-      to: emailUser,
-      subject: `Новая заявка от ${name}`,
-      html: htmlContent,
+    const params = new URLSearchParams({
+      peer_id: vkPeerId,
+      message: text,
+      random_id: Date.now().toString(),
+      access_token: vkToken,
+      v: "5.199",
     });
+
+    const url = `https://api.vk.com/method/messages.send?${params.toString()}`;
+
+    console.log("Sending to VK...");
+
+    const response = await fetch(url, { method: "POST" });
+    const data = await response.json();
+
+    console.log("VK response:", data);
+
+    if (data.error) {
+      throw new Error(data.error.error_msg || "VK API error");
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
