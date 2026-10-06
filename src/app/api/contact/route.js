@@ -43,7 +43,7 @@ export async function POST(request) {
 ${message}
     `.trim();
 
-    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+    const url = `https://tg.i-c-a.su/bot${token}/sendMessage`;
     console.log("Sending to Telegram...");
 
     const response = await fetch(url, {
