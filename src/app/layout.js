@@ -1,4 +1,3 @@
-import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar";
 import ParticlesBackground from "./ParticlesBackground";
@@ -6,17 +5,6 @@ import CustomCursor from "./CustomCursor";
 import ScrollProgress from "./ScrollProgress";
 import PmPlayground from "./PmPlayground";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin", "cyrillic"],
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata = {
   title: "Кирилл Мирончук — Проектный менеджер | Коуч | Мотиватор",
