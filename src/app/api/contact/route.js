@@ -24,14 +24,18 @@ export async function POST(request) {
     }
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.yandex.ru",
-      port: 465,
-      secure: true,
-      auth: {
-        user: emailUser,
-        pass: emailPass,
-      },
-    });
+  host: "smtp.yandex.ru",
+  port: 587,
+  secure: false,
+  requireTLS: true,
+  auth: {
+    user: emailUser,
+    pass: emailPass,
+  },
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 10000,
+});
 
     const htmlContent = `
       <h2>🔔 Новая заявка с сайта</h2>
