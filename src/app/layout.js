@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import ParticlesBackground from "./ParticlesBackground";
 import CustomCursor from "./CustomCursor";
 import ScrollProgress from "./ScrollProgress";
+import PmPlayground from "./PmPlayground";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         <ScrollProgress />
         <Navbar />
         <CustomCursor />
+        <PmPlayground />
         <main className="relative z-10">{children}</main>
       </body>
     </html>
