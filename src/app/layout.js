@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
+      <body className="antialiased">
         <ParticlesBackground />
         <div className="mesh-gradient" />
         <ScrollProgress />

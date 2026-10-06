@@ -71,7 +71,7 @@ export default function Home() {
 
           {/* Имя */}
           <FadeIn delay={0.2}>
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-text">
               Кирилл Мирончук
             </h1>
           </FadeIn>
@@ -138,7 +138,7 @@ export default function Home() {
       <section id="about" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text">
               Обо мне
             </h2>
           </FadeIn>
@@ -268,7 +268,7 @@ export default function Home() {
       <section id="skills" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text">
               Что я уже умею
             </h2>
           </FadeIn>
@@ -384,7 +384,7 @@ export default function Home() {
       <section id="services" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text">
               Услуги
             </h2>
           </FadeIn>
@@ -498,7 +498,7 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text">
               Мои сильные стороны
             </h2>
           </FadeIn>
@@ -601,7 +601,7 @@ export default function Home() {
       <section id="experience" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text">
               Опыт работы
             </h2>
           </FadeIn>
@@ -718,7 +718,7 @@ export default function Home() {
       <section id="projects" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text">
               Проекты
             </h2>
           </FadeIn>
@@ -958,7 +958,7 @@ export default function Home() {
       <section id="education" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text">
               Образование
             </h2>
           </FadeIn>
@@ -1103,7 +1103,7 @@ export default function Home() {
       <section id="certificates" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text">
               Сертификаты и дипломы
             </h2>
           </FadeIn>
@@ -1224,7 +1224,7 @@ export default function Home() {
                   <div className="text-4xl text-blue-400">
                     <FaBullseye />
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-space-grotesk)]">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">
                     Открыт к предложениям
                   </h3>
                 </div>
@@ -1269,7 +1269,7 @@ export default function Home() {
       <section id="contact" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text">
               Связаться со мной
             </h2>
           </FadeIn>
