@@ -1,36 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 Кирилл Мирончук — Портфолио
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+**Менеджер проектов | Коуч | Мотиватор**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[![Site](https://img.shields.io/badge/Сайт-kirillmironchuk.ru-3b82f6?style=for-the-badge&logo=googlechrome&logoColor=white)](https://kirillmironchuk.ru)
+[![Telegram](https://img.shields.io/badge/Telegram-@kirill__icetea-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/kirill_icetea)
+[![GitHub](https://img.shields.io/badge/GitHub-kirillicetea-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/kirillicetea)
+
+</div>
+
+---
+
+## 👋 О проекте
+
+Это мой **личный сайт-портфолио**, где я показываю:
+- 💼 **Опыт работы** — 4+ года в клиентском менеджменте
+- 🎯 **Координацию федеральных проектов** — 4 всероссийских мероприятия
+- 🛠 **Навыки** — управление проектами, клиентский сервис, техническая база
+- 🎓 **Образование** — бакалавриат, магистратура, курсы
+- 📊 **Проекты** — реальные кейсы с открытым кодом
+
+**Цель сайта:** показать работодателям и клиентам мой путь — **от менеджера к проектному управлению в IT**.
+
+---
+
+## 🎯 Ключевые фичи сайта
+
+| Фича | Что это |
+|---|---|
+| **Интерактивный Kanban** | Демонстрация PM-навыков через drag-n-drop |
+| **Telegram-форма** | Заявки приходят напрямую в Telegram |
+| **QR-коды** | Быстрый доступ к контактам |
+| **Анимации** | FadeIn при скролле, магнитные кнопки, 3D-карточки |
+| **Адаптивность** | Корректно работает на телефоне, планшете, ПК |
+
+---
+
+## 🛠 Технологический стек
+
+### Frontend
+- **Next.js 16** — фреймворк React с серверным рендерингом
+- **React 19** — библиотека UI
+- **Tailwind CSS 4** — utility-first CSS
+- **Framer Motion** — анимации
+
+### Backend
+- **Next.js API Routes** — серверные endpoints
+- **Formspree** — обработка формы заявок
+
+### Инфраструктура
+- **Timeweb Cloud** — российский хостинг
+- **Домен:** `kirillmironchuk.ru`
+- **GitHub Actions** — CI/CD (планируется)
+
+### Библиотеки
+- **react-icons** — иконки
+- **@dnd-kit** — drag-n-drop для Kanban
+- **Lenis** — плавный скролл
+
+---
+
+## 📁 Структура проекта
+
+```
+kirill-portfolio/
+├── src/
+│   ├── app/
+│   │   ├── page.js              # Главная (портфолио)
+│   │   ├── layout.js            # Общий layout
+│   │   ├── Navbar.js            # Навигация
+│   │   ├── api/
+│   │   │   └── contact/
+│   │   │       └── route.js     # API для формы
+│   │   └── ... (компоненты)
+│   ├── components/
+│   │   ├── FadeIn.js
+│   │   ├── AnimatedCounter.js
+│   │   ├── MagneticButton.js
+│   │   ├── TiltCard.js
+│   │   ├── PmPlayground.js
+│   │   ├── ParticlesBackground.js
+│   │   ├── CustomCursor.js
+│   │   └── ScrollProgress.js
+│   └── ...
+├── public/
+│   ├── photo.jpg
+│   ├── certificates/
+│   └── qr/
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🚀 Локальный запуск
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# 1. Клонировать репозиторий
+git clone https://github.com/kirillicetea/kirill-portfolio.git
+cd kirill-portfolio
 
-## Learn More
+# 2. Установить зависимости
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+# 3. Создать .env.local (см. .env.example)
+cp .env.example .env.local
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 4. Запустить dev-сервер
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Открыть [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📊 Метрики проекта
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **11 секций** + Navbar
+- **5 проектов** — федеральные мероприятия ЖКХ
+- **4+ года** опыта в клиентском менеджменте
+- **0 ₽** — стоимость хостинга на первом этапе
+
+---
+
+## 👨‍💻 Автор
+
+**Кирилл Мирончук**
+
+- 🌐 [kirillmironchuk.ru](https://kirillmironchuk.ru)
+- ✈️ [@kirill_icetea](https://t.me/kirill_icetea)
+- 💻 [github.com/kirillicetea](https://github.com/kirillicetea)
+- 📧 [kirilltesis@yandex.ru](mailto:kirilltesis@yandex.ru)
+
+---
+
+## 📄 Лицензия
+
+© 2026 Кирилл Мирончук. Все права защищены.
+
+Проект создан как **личное портфолио**. Исходный код открыт для **ознакомления**, но **не для коммерческого использования** без разрешения автора.
+
+---
+
+<div align="center">
+
+**Сделано с ❤️ на Next.js**
+
+</div>
