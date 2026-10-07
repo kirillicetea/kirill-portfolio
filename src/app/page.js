@@ -1,11 +1,34 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import FadeIn from "./FadeIn";
 import AnimatedCounter from "./AnimatedCounter";
 import MagneticButton from "./MagneticButton";
 import TiltCard from "./TiltCard";
-import { FaTelegramPlane, FaGithub, FaEnvelope, FaGraduationCap, FaLaptopCode, FaMicrophone, FaChartBar, FaBook, FaPython, FaBriefcase, FaCity, FaBullseye, FaComments, FaCog, FaBrain, FaRocket, FaBolt, FaClipboardList, FaWater } from "react-icons/fa";
+import ProjectCard from "./ProjectCard";
+import {
+  FaTelegramPlane,
+  FaGithub,
+  FaEnvelope,
+  FaGraduationCap,
+  FaLaptopCode,
+  FaMicrophone,
+  FaChartBar,
+  FaBook,
+  FaPython,
+  FaBriefcase,
+  FaCity,
+  FaBullseye,
+  FaComments,
+  FaCog,
+  FaBrain,
+  FaRocket,
+  FaBolt,
+  FaClipboardList,
+  FaWater,
+  FaArrowRight,
+} from "react-icons/fa";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -115,33 +138,136 @@ export default function Home() {
 
           {/* Кнопки */}
           <FadeIn delay={0.8}>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <MagneticButton
-  href="#services"
-  className="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-colors shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
->
-  <FaRocket />
-  Услуги
-</MagneticButton>
-<MagneticButton
-  href="#contact"
-  className="inline-flex items-center gap-2 px-8 py-3 glass rounded-lg font-semibold text-white"
->
-  <FaComments />
-  Связаться
-</MagneticButton>
-<MagneticButton
-  href="https://t.me/kirill_icetea"
-  className="inline-flex items-center gap-2 px-8 py-3 glass rounded-lg font-semibold text-white"
->
-  <FaTelegramPlane />
-  Telegram
-</MagneticButton>
-            </div>
-          </FadeIn>
+  <div className="flex flex-wrap gap-4 justify-center">
+    {/* Главная кнопка — Проекты (выделенная) */}
+    <Link
+      href="/projects"
+      prefetch={true}
+      className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 rounded-lg font-semibold text-white transition-all shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70 hover:-translate-y-0.5 flex items-center gap-2"
+    >
+      <FaRocket className="text-lg" />
+      <span>Мои проекты</span>
+      <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
+    </Link>
+
+    {/* Вторичные кнопки */}
+    <a
+      href="#services"
+      className="px-6 py-4 glass rounded-lg font-semibold text-white transition-all hover:-translate-y-0.5 flex items-center gap-2"
+    >
+      <FaBriefcase className="text-base" />
+      <span>Услуги</span>
+    </a>
+
+    <a
+      href="https://t.me/kirill_icetea"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-6 py-4 glass rounded-lg font-semibold text-white transition-all hover:-translate-y-0.5 flex items-center gap-2"
+    >
+      <FaTelegramPlane className="text-base" />
+      <span>Telegram</span>
+    </a>
+  </div>
+</FadeIn>
 
         </div>
       </section>
+      {/* PROJECTS SECTION */}
+<section id="projects" className="py-24 px-6 relative">
+  {/* Фоновое свечение (уменьшенное) */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/8 rounded-full blur-[100px]" />
+  </div>
+
+  <div className="max-w-6xl mx-auto relative">
+    <FadeIn>
+      <div className="text-center mb-4">
+        <span className="inline-flex items-center gap-2 text-xs font-bold text-blue-400 bg-blue-500/10 border border-blue-500/30 px-4 py-1.5 rounded-full uppercase tracking-wider">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500" />
+          </span>
+          Мои проекты
+        </span>
+      </div>
+    </FadeIn>
+
+    <FadeIn delay={0.1}>
+      <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center gradient-text font-[family-name:var(--font-space-grotesk)]">
+        Что я создаю прямо сейчас
+      </h2>
+    </FadeIn>
+
+    <FadeIn delay={0.2}>
+      <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto text-lg">
+        Проекты, которые я делаю с нуля — как <span className="text-blue-400 font-semibold">PM</span>, <span className="text-blue-400 font-semibold">разработчик</span> и <span className="text-blue-400 font-semibold">дизайнер</span> в одном лице
+      </p>
+    </FadeIn>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <FadeIn delay={0.3}>
+        <Link href="/projects/it-stories" className="block h-full">
+          <div className="glass rounded-2xl overflow-hidden hover:border-blue-500 transition-all group h-full relative">
+            {/* Пульсирующий бейдж */}
+            <div className="absolute top-4 right-4 z-10">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold text-green-400 bg-green-500/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-green-500/30">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
+                </span>
+                В разработке
+              </span>
+            </div>
+
+            {/* Обложка с градиентом и иконкой */}
+            <div className="relative h-56 overflow-hidden bg-gradient-to-br from-blue-600/30 via-cyan-500/20 to-purple-500/20 flex items-center justify-center">
+  <FaRocket className="text-7xl text-blue-400/60 group-hover:scale-110 group-hover:text-blue-400 transition-all duration-500" />
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] to-transparent" />
+</div>
+
+            {/* Контент */}
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                IT Transition Stories
+              </h3>
+              <p className="text-slate-400 leading-relaxed mb-6">
+                Платформа реальных историй перехода в IT. Люди делятся опытом, читают чужие пути и находят поддержку.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {["Next.js", "Supabase", "PM-кейс"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="inline-flex items-center gap-2 text-blue-400 font-semibold group-hover:gap-4 transition-all">
+                Изучить проект <FaArrowRight className="text-sm" />
+              </div>
+            </div>
+          </div>
+        </Link>
+      </FadeIn>
+
+      {/* Заглушка для будущего проекта */}
+      <FadeIn delay={0.4}>
+        <div className="glass rounded-2xl p-8 h-full flex items-center justify-center border-dashed border-2 border-white/10 min-h-[420px] relative overflow-hidden group">
+          <div className="text-center">
+  <div className="text-5xl text-slate-700 mb-4 group-hover:text-slate-500 transition-colors">+</div>
+  <p className="text-slate-500 text-sm">
+    Здесь будет следующий проект
+  </p>
+</div>
+        </div>
+      </FadeIn>
+    </div>
+  </div>
+</section>
                               {/* ABOUT */}
       <section id="about" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">

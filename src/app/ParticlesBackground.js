@@ -6,8 +6,9 @@ export default function ParticlesBackground() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-  // Отключаем на мобильных для производительности
-  if (window.innerWidth < 768) return;
+  // Отключаем particles на устройствах с малым количеством ядер
+  if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) return;
+  if (window.innerWidth < 1024) return;
   
   const canvas = canvasRef.current;
   if (!canvas) return;
