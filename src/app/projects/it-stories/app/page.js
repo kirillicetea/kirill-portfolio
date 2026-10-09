@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { supabase } from "@/app/lib/supabase";
-import { FaRocket, FaArrowRight } from "react-icons/fa";
+import { FaRocket, FaArrowRight, FaPen, FaSearch } from "react-icons/fa";
 
 export const metadata = {
   title: "IT Transition Stories — истории перехода в IT",
@@ -16,16 +16,17 @@ export default async function StoriesAppPage() {
     .eq("status", "published")
     .order("published_at", { ascending: false });
 
-  return (
-    <main className="min-h-screen bg-[#0a0a0f] text-white pt-32 pb-24 px-6">
-      <div className="max-w-4xl mx-auto">
-        <Link
-          href="/projects/it-stories"
-          className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors mb-8 text-sm"
-        >
-          ← К описанию проекта
-        </Link>
+  const totalTags = stories
+    ? [...new Set(stories.flatMap((s) => s.tags || []))].length
+    : 0;
+  const totalAuthors = stories
+    ? [...new Set(stories.map((s) => s.author_name))].length
+    : 0;
 
+  return (
+    <main className="min-h-screen bg-[#0a0a0f] text-white pb-24 px-6">
+      <div className="max-w-4xl mx-auto">
+        {/* Hero */}
         <div className="mb-4">
           <span className="inline-flex items-center gap-2 text-xs font-semibold text-green-400 bg-green-500/10 border border-green-500/30 px-3 py-1.5 rounded-full">
             <span className="relative flex h-1.5 w-1.5">
@@ -39,25 +40,47 @@ export default async function StoriesAppPage() {
         <h1 className="text-4xl md:text-6xl font-bold mb-4 gradient-text font-[family-name:var(--font-space-grotesk)]">
           Истории перехода в IT
         </h1>
-        <p className="text-lg text-slate-400 mb-12 max-w-2xl">
+        <p className="text-lg text-slate-400 mb-8 max-w-2xl">
           Реальные опыты людей, которые сменили профессию. Без маркетинга и обещаний — только честные истории.
         </p>
 
+        {/* Статистика */}
+        <div className="flex flex-wrap gap-6 mb-8 text-sm">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl font-bold gradient-text">{stories?.length || 0}</span>
+            <span className="text-slate-400">историй</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-2xl font-bold gradient-text">{totalAuthors}</span>
+            <span className="text-slate-400">авторов</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-2xl font-bold gradient-text">{totalTags}</span>
+            <span className="text-slate-400">тегов</span>
+          </div>
+        </div>
+
+        {/* Поиск */}
+        <div className="mb-8 relative">
+          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm" />
+          <input
+            type="text"
+            placeholder="Поиск по историям (скоро)..."
+            disabled
+            className="w-full pl-11 pr-4 py-3 bg-slate-900/50 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none opacity-60 cursor-not-allowed"
+          />
+        </div>
+
+        {/* Ошибка */}
         {error && (
           <div className="glass rounded-2xl p-6 border border-red-500/30 mb-8">
             <p className="text-red-400">Ошибка загрузки: {error.message}</p>
           </div>
         )}
 
-        {!error && stories?.length === 0 && (
-          <div className="glass rounded-2xl p-12 text-center border-dashed border-2 border-white/10">
-            <FaRocket className="text-5xl text-slate-600 mx-auto mb-4" />
-            <p className="text-slate-400">Пока нет историй. Стань первым!</p>
-          </div>
-        )}
-
+        {/* Лента */}
         {stories && stories.length > 0 && (
-          <div className="grid gap-6">
+          <div className="grid gap-6 mb-8">
             {stories.map((story) => (
               <Link
                 key={story.id}
@@ -90,6 +113,26 @@ export default async function StoriesAppPage() {
             ))}
           </div>
         )}
+
+        {/* CTA */}
+        <div className="glass rounded-2xl p-8 md:p-12 text-center border-2 border-dashed border-blue-500/30">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-500/30">
+            <FaPen className="text-2xl text-white" />
+          </div>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            Поделись своей историей
+          </h3>
+          <p className="text-slate-400 mb-8 max-w-md mx-auto">
+            Твой опыт может помочь тысячам людей сделать первый шаг в IT
+          </p>
+          <Link
+            href="/projects/it-stories/app/share"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 rounded-lg font-semibold text-white transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-0.5"
+          >
+            <FaPen />
+            Написать историю
+          </Link>
+        </div>
       </div>
     </main>
   );

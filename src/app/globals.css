@@ -129,8 +129,9 @@ html {
 }
 
 /* Custom cursor — скрываем системный на десктопе */
+/* Custom cursor — скрываем системный только на портфолио */
 @media (min-width: 768px) {
-  * {
+  body:not(.app-mode) * {
     cursor: none !important;
   }
 }

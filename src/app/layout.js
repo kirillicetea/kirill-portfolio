@@ -1,10 +1,6 @@
 import "./globals.css";
-import Navbar from "./Navbar";
-import ParticlesBackground from "./ParticlesBackground";
-import CustomCursor from "./CustomCursor";
+import AppShell from "./AppShell";
 import ScrollProgress from "./ScrollProgress";
-import PmPlayground from "./PmPlayground";
-
 
 export const metadata = {
   metadataBase: new URL("https://kirillmironchuk.ru"),
@@ -49,13 +45,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ru" data-scroll-behavior="smooth">
       <body className="antialiased">
-        <ParticlesBackground />
-        <div className="mesh-gradient" />
         <ScrollProgress />
-        <Navbar />
-        <CustomCursor />
-        <PmPlayground />
-        <main className="relative z-10">{children}</main>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
