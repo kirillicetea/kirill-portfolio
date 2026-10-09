@@ -1,77 +1,95 @@
 import Link from "next/link";
-import FadeIn from "../../../FadeIn";
-import {
-  FaRocket,
-  FaBook,
-  FaPen,
-  FaUser,
-  FaTelegramPlane,
-} from "react-icons/fa";
+import { supabase } from "@/app/lib/supabase";
+import { FaRocket, FaArrowRight } from "react-icons/fa";
 
 export const metadata = {
-  title: "IT Transition Stories — приложение",
-  description: "Платформа историй перехода в IT",
+  title: "IT Transition Stories — истории перехода в IT",
+  description: "Реальные опыты людей, которые сменили профессию и вошли в IT",
 };
 
-export default function AppPage() {
+export const revalidate = 60;
+
+export default async function StoriesAppPage() {
+  const { data: stories, error } = await supabase
+    .from("stories")
+    .select("*")
+    .eq("status", "published")
+    .order("published_at", { ascending: false });
+
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white pt-32 pb-24 px-6">
       <div className="max-w-4xl mx-auto">
-        <FadeIn>
-          <Link
-            href="/projects/it-stories"
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors mb-8 text-sm"
-          >
-            ← К описанию проекта
-          </Link>
-        </FadeIn>
+        <Link
+          href="/projects/it-stories"
+          className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors mb-8 text-sm"
+        >
+          ← К описанию проекта
+        </Link>
 
-        <FadeIn delay={0.2}>
-          <div className="text-center py-24">
-            <FaRocket className="text-7xl mb-6 mx-auto text-blue-400/60" />
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text font-[family-name:var(--font-space-grotesk)]">
-              Проект в разработке
-            </h1>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-12">
-              Здесь будет сама платформа IT Transition Stories — лента историй,
-              форма для авторов и профили. Работаю над этим прямо сейчас!
-            </p>
-          </div>
-        </FadeIn>
+        <div className="mb-4">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold text-green-400 bg-green-500/10 border border-green-500/30 px-3 py-1.5 rounded-full">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
+            </span>
+            MVP запущен
+          </span>
+        </div>
 
-        <FadeIn delay={0.4}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            <div className="glass rounded-2xl p-6 text-center">
-              <FaBook className="text-3xl mb-3 mx-auto text-blue-400" />
-              <p className="text-sm text-slate-300">Лента историй</p>
-            </div>
-            <div className="glass rounded-2xl p-6 text-center">
-              <FaPen className="text-3xl mb-3 mx-auto text-blue-400" />
-              <p className="text-sm text-slate-300">Форма «Поделиться»</p>
-            </div>
-            <div className="glass rounded-2xl p-6 text-center">
-              <FaUser className="text-3xl mb-3 mx-auto text-blue-400" />
-              <p className="text-sm text-slate-300">Профили авторов</p>
-            </div>
-          </div>
-        </FadeIn>
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 gradient-text font-[family-name:var(--font-space-grotesk)]">
+          Истории перехода в IT
+        </h1>
+        <p className="text-lg text-slate-400 mb-12 max-w-2xl">
+          Реальные опыты людей, которые сменили профессию. Без маркетинга и обещаний — только честные истории.
+        </p>
 
-        <FadeIn delay={0.6}>
-          <div className="text-center mt-16">
-            <p className="text-slate-500 text-sm mb-4">
-              Следи за обновлениями в моём Telegram
-            </p>
-            <a
-              href="https://t.me/kirill_icetea"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-all"
-            >
-              <FaTelegramPlane className="text-base" />
-              Подписаться
-            </a>
+        {error && (
+          <div className="glass rounded-2xl p-6 border border-red-500/30 mb-8">
+            <p className="text-red-400">Ошибка загрузки: {error.message}</p>
           </div>
-        </FadeIn>
+        )}
+
+        {!error && stories?.length === 0 && (
+          <div className="glass rounded-2xl p-12 text-center border-dashed border-2 border-white/10">
+            <FaRocket className="text-5xl text-slate-600 mx-auto mb-4" />
+            <p className="text-slate-400">Пока нет историй. Стань первым!</p>
+          </div>
+        )}
+
+        {stories && stories.length > 0 && (
+          <div className="grid gap-6">
+            {stories.map((story) => (
+              <Link
+                key={story.id}
+                href={`/projects/it-stories/app/${story.slug}`}
+                className="glass rounded-2xl p-6 md:p-8 hover:border-blue-500 transition-all block group"
+              >
+                <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                  {story.title}
+                </h2>
+                <p className="text-sm text-slate-400 mb-4">
+                  Автор: <span className="text-slate-300">{story.author_name}</span>
+                </p>
+                <p className="text-slate-300 leading-relaxed line-clamp-3 mb-4">
+                  {story.content}
+                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {story.tags?.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs px-2 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  <span className="ml-auto inline-flex items-center gap-2 text-blue-400 text-sm font-semibold group-hover:gap-3 transition-all">
+                    Читать <FaArrowRight className="text-xs" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </main>
   );
