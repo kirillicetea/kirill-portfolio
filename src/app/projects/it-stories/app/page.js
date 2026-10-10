@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/app/lib/supabase";
 import TransitionMap from "./TransitionMap";
-import { FaCompass, FaPen, FaArrowRight } from "react-icons/fa";
+import { FaPen, FaArrowRight } from "react-icons/fa";
 
 export default function AppHome() {
   const [stories, setStories] = useState([]);
@@ -27,12 +27,9 @@ export default function AppHome() {
     load();
   }, []);
 
-  // Истории, связанные с выбранной ролью
   const filteredStories = selectedRole
     ? stories.filter(
-        (s) =>
-          s.from_role === selectedRole ||
-          s.to_role === selectedRole
+        (s) => s.from_role === selectedRole || s.to_role === selectedRole
       )
     : [];
 
@@ -41,19 +38,13 @@ export default function AppHome() {
       {/* Hero */}
       <div className="mb-8">
         <div className="mb-3">
-          <span className="inline-flex items-center gap-2 text-xs font-semibold text-green-400 bg-green-500/10 border border-green-500/30 px-3 py-1 rounded-full">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
-            </span>
-            MVP запущен
-          </span>
+          <span className="app-badge app-badge-pulse">MVP запущен</span>
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-[#e6edf3] mb-3">
+        <h1 className="text-3xl md:text-4xl font-bold mb-3 app-gradient-text">
           Карта переходов в IT
         </h1>
-        <p className="text-[#8b949e] max-w-2xl">
+        <p className="text-[#a78bfa] max-w-2xl">
           Каждая стрелка — реальный путь человека из одной профессии в другую.
           Кликни на узел, чтобы прочитать истории.
         </p>
@@ -62,47 +53,45 @@ export default function AppHome() {
       {/* Статистика */}
       <div className="grid grid-cols-3 gap-3 mb-6">
         <div className="app-card p-4">
-          <div className="text-2xl font-bold text-[#e6edf3]">
-            {stories.length}
-          </div>
-          <div className="text-xs text-[#8b949e] mt-1">историй</div>
+          <div className="app-stat-value">{stories.length}</div>
+          <div className="app-stat-label">историй</div>
         </div>
         <div className="app-card p-4">
-          <div className="text-2xl font-bold text-[#e6edf3]">
+          <div className="app-stat-value">
             {new Set(stories.flatMap((s) => s.tags || [])).size}
           </div>
-          <div className="text-xs text-[#8b949e] mt-1">тегов</div>
+          <div className="app-stat-label">тегов</div>
         </div>
         <div className="app-card p-4">
-          <div className="text-2xl font-bold text-[#e6edf3]">
+          <div className="app-stat-value">
             {new Set(stories.map((s) => s.author_name)).size}
           </div>
-          <div className="text-xs text-[#8b949e] mt-1">авторов</div>
+          <div className="app-stat-label">авторов</div>
         </div>
       </div>
 
       {/* Карта */}
       {!loading && (
-  <TransitionMap
-    stories={stories}
-    selectedRole={selectedRole}
-    onNodeClick={(role) =>
-      setSelectedRole(selectedRole === role ? null : role)
-    }
-  />
-)}
+        <TransitionMap
+          stories={stories}
+          selectedRole={selectedRole}
+          onNodeClick={(role) =>
+            setSelectedRole(selectedRole === role ? null : role)
+          }
+        />
+      )}
 
       {/* Истории по выбранной роли */}
       {selectedRole && (
         <div className="mt-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-[#e6edf3]">
+            <h2 className="text-lg font-bold text-[#f5f3ff]">
               Истории с ролью:{" "}
-              <span className="text-blue-400">{selectedRole}</span>
+              <span className="app-gradient-text">{selectedRole}</span>
             </h2>
             <button
               onClick={() => setSelectedRole(null)}
-              className="text-xs text-[#8b949e] hover:text-[#e6edf3] transition-colors"
+              className="text-xs text-[#7c6f9e] hover:text-[#a855f7] transition-colors"
             >
               Сбросить ✕
             </button>
@@ -110,7 +99,7 @@ export default function AppHome() {
 
           {filteredStories.length === 0 ? (
             <div className="app-card p-6 text-center">
-              <p className="text-[#8b949e] text-sm">
+              <p className="text-[#7c6f9e] text-sm">
                 Пока нет историй с этой ролью
               </p>
             </div>
@@ -120,15 +109,15 @@ export default function AppHome() {
                 <Link
                   key={story.id}
                   href={`/projects/it-stories/app/${story.slug}`}
-                  className="app-card block p-5 hover:border-blue-500 transition-all group"
+                  className="app-card block p-5 group"
                 >
-                  <h3 className="text-base font-bold text-[#e6edf3] mb-2 group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-base font-bold text-[#f5f3ff] mb-2 group-hover:text-[#a855f7] transition-colors">
                     {story.title}
                   </h3>
-                  <p className="text-xs text-[#8b949e] mb-2">
+                  <p className="text-xs text-[#7c6f9e] mb-2 font-mono">
                     {story.from_role} → {story.to_role}
                   </p>
-                  <span className="inline-flex items-center gap-1 text-blue-400 text-xs font-semibold">
+                  <span className="inline-flex items-center gap-1 text-[#a855f7] text-xs font-semibold">
                     Читать <FaArrowRight className="text-[10px]" />
                   </span>
                 </Link>
@@ -139,14 +128,14 @@ export default function AppHome() {
       )}
 
       {/* CTA */}
-      <div className="app-card p-8 text-center mt-8 border-dashed border-2 border-blue-500/30">
-        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
+      <div className="app-card p-8 text-center mt-8 border-dashed border-2 border-[#a855f7]/30">
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#a855f7] to-[#ec4899] flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#a855f7]/40">
           <FaPen className="text-xl text-white" />
         </div>
-        <h3 className="text-xl font-bold text-[#e6edf3] mb-2">
+        <h3 className="text-xl font-bold text-[#f5f3ff] mb-2">
           Поделись своей историей
         </h3>
-        <p className="text-[#8b949e] text-sm mb-6 max-w-md mx-auto">
+        <p className="text-[#a78bfa] text-sm mb-6 max-w-md mx-auto">
           Твой путь может помочь тысячам людей сделать первый шаг в IT
         </p>
         <Link

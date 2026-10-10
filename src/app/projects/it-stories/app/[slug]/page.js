@@ -40,102 +40,113 @@ export default async function StoryPage({ params }) {
   }
 
   return (
-    <main className="min-h-screen bg-[#0a0a0f] text-white pt-32 pb-24 px-6">
-      <article className="max-w-3xl mx-auto">
-        {/* Навигация назад */}
-        <Link
-          href="/projects/it-stories/app"
-          className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors mb-8 text-sm"
-        >
-          <FaArrowLeft className="text-xs" />
-          Все истории
-        </Link>
+    <article className="max-w-3xl mx-auto">
+      {/* Навигация назад */}
+      <Link
+        href="/projects/it-stories/app/feed"
+        className="inline-flex items-center gap-2 text-[#7c6f9e] hover:text-[#a855f7] transition-colors mb-8 text-sm font-mono"
+      >
+        <FaArrowLeft className="text-xs" />
+        все истории
+      </Link>
 
-        {/* Заголовок */}
-        <header className="mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text font-[family-name:var(--font-space-grotesk)] leading-tight">
-            {story.title}
-          </h1>
+      {/* Заголовок */}
+      <header className="mb-12">
+        <h1 className="text-3xl md:text-5xl font-bold mb-6 app-gradient-text leading-tight">
+          {story.title}
+        </h1>
 
-          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
-            <span>
-              Автор: <span className="text-slate-200">{story.author_name}</span>
+        <div className="flex flex-wrap items-center gap-4 text-sm text-[#a78bfa] mb-6">
+          <span>
+            Автор: <span className="text-[#f5f3ff]">{story.author_name}</span>
+          </span>
+
+          {story.published_at && (
+            <span className="font-mono">
+              {new Date(story.published_at).toLocaleDateString("ru-RU", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
             </span>
-
-            {story.published_at && (
-              <span>
-                {new Date(story.published_at).toLocaleDateString("ru-RU", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
-              </span>
-            )}
-          </div>
-
-          {/* Теги */}
-          {story.tags && story.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-6">
-              {story.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-300"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
           )}
-        </header>
-
-        {/* Контент */}
-        <div className="glass rounded-2xl p-8 md:p-10 mb-12">
-          <div className="text-slate-200 leading-relaxed whitespace-pre-line text-lg">
-            {story.content}
-          </div>
         </div>
 
-        {/* Контакты автора */}
-        {(story.author_social || story.author_email) && (
-          <div className="glass rounded-2xl p-6 md:p-8 mb-12">
-            <h3 className="text-lg font-bold text-white mb-4">
-              Связаться с автором
-            </h3>
-            <div className="flex flex-wrap gap-4">
-              {story.author_social && (
-                <a
-                  href={story.author_social}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-all text-sm"
-                >
-                  <FaTelegramPlane />
-                  Написать в Telegram
-                </a>
-              )}
-              {story.author_email && (
-                <a
-                  href={`mailto:${story.author_email}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 glass rounded-lg font-semibold transition-all text-sm hover:border-blue-500"
-                >
-                  {story.author_email}
-                </a>
-              )}
+        {/* Переход откуда → куда */}
+        {story.from_role && story.to_role && (
+          <div className="app-card p-4 mb-6 inline-flex items-center gap-3">
+            <div className="text-xs uppercase tracking-wider text-[#7c6f9e] font-mono">
+              Переход:
+            </div>
+            <div className="text-sm text-[#f5f3ff] font-semibold">
+              {story.from_role}
+            </div>
+            <div className="text-[#a855f7]">→</div>
+            <div className="text-sm font-semibold app-gradient-text">
+              {story.to_role}
             </div>
           </div>
         )}
 
-        {/* CTA */}
-        <div className="text-center">
-          <Link
-            href="/projects/it-stories/app"
-            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold transition-colors"
-          >
-            <FaArrowLeft className="text-xs" />
-            Вернуться к списку историй
-          </Link>
+        {/* Теги */}
+        {story.tags && story.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {story.tags.map((tag) => (
+              <span key={tag} className="app-tag">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* Контент */}
+      <div className="app-card p-8 md:p-10 mb-12">
+        <div className="text-[#f5f3ff] leading-relaxed whitespace-pre-line text-base md:text-lg">
+          {story.content}
         </div>
-      </article>
-    </main>
+      </div>
+
+      {/* Контакты автора */}
+      {(story.author_social || story.author_email) && (
+        <div className="app-card p-6 md:p-8 mb-12">
+          <h3 className="text-lg font-bold text-[#f5f3ff] mb-4">
+            Связаться с автором
+          </h3>
+          <div className="flex flex-wrap gap-4">
+            {story.author_social && (
+              <a
+                href={story.author_social}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="app-btn-primary text-sm"
+              >
+                <FaTelegramPlane />
+                Написать в Telegram
+              </a>
+            )}
+            {story.author_email && (
+              <a
+                href={`mailto:${story.author_email}`}
+                className="app-btn-secondary text-sm"
+              >
+                {story.author_email}
+              </a>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* CTA назад */}
+      <div className="text-center">
+        <Link
+          href="/projects/it-stories/app/feed"
+          className="inline-flex items-center gap-2 text-[#a855f7] hover:text-[#ec4899] font-semibold transition-colors text-sm"
+        >
+          <FaArrowLeft className="text-xs" />
+          Вернуться к списку историй
+        </Link>
+      </div>
+    </article>
   );
 }

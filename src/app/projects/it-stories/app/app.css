@@ -1,61 +1,190 @@
-/* App-режим: свой дизайн, не как портфолио */
+/* ========================================
+   NEO-TOKYO DESIGN SYSTEM
+   Элегантный неон — Linear-style
+   ======================================== */
 
+/* CSS-переменные */
 .app-root {
-  background: #0d1117;
-  color: #e6edf3;
+  --bg-main: #0a0514;
+  --bg-panel: #130a24;
+  --bg-card: #1a0f30;
+  --bg-card-hover: #241441;
+
+  --neon-purple: #a855f7;
+  --neon-purple-soft: #c084fc;
+  --neon-magenta: #ec4899;
+  --neon-cyan: #06b6d4;
+
+  --text-primary: #f5f3ff;
+  --text-secondary: #a78bfa;
+  --text-muted: #7c6f9e;
+
+  --border-soft: rgba(168, 85, 247, 0.15);
+  --border-medium: rgba(168, 85, 247, 0.25);
+  --border-strong: rgba(168, 85, 247, 0.45);
+
+  --glow-soft: 0 0 20px rgba(168, 85, 247, 0.2);
+  --glow-medium: 0 0 30px rgba(168, 85, 247, 0.35);
+  --glow-strong: 0 0 40px rgba(168, 85, 247, 0.5);
+
+  background: var(--bg-main);
+  color: var(--text-primary);
   font-size: 14px;
   line-height: 1.5;
+  position: relative;
 }
 
-/* Системный курсор в приложении */
-@media (min-width: 768px) {
-  .app-root,
-  .app-root * {
-    cursor: auto !important;
+/* Фон — неоновая сетка + градиентные пятна */
+.app-root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.app-root::after {
+  content: "";
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(168, 85, 247, 0.15) 0%,
+    transparent 60%
+  );
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+  animation: neonFloat 20s ease-in-out infinite;
+}
+
+@keyframes neonFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-80px, 80px) scale(1.2);
+    opacity: 0.9;
   }
 }
 
-/* Скроллбар приложения */
+/* Контент поверх фона */
+.app-root > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Курсор */
+/* Курсор */
+@media (min-width: 768px) {
+  .app-root,
+  .app-root * {
+    cursor: default;
+  }
+
+  /* Кликабельные элементы — указатель */
+  .app-root a,
+  .app-root button,
+  .app-root [role="button"],
+  .app-root .app-btn-primary,
+  .app-root .app-btn-secondary,
+  .app-root .sidebar-item,
+  .app-root .app-card a,
+  .app-root input[type="submit"] {
+    cursor: pointer !important;
+  }
+
+  /* Инпуты и textarea — текстовый курсор */
+  .app-root input,
+  .app-root textarea,
+  .app-root select {
+    cursor: text;
+  }
+
+  /* Тексты внутри карточек не должны показывать текстовый курсор */
+  .app-root .app-card p,
+  .app-root .app-card h1,
+  .app-root .app-card h2,
+  .app-root .app-card h3,
+  .app-root .app-card div,
+  .app-root .app-card span {
+    cursor: inherit;
+  }
+}
+
+/* Скроллбар */
 .app-root ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 .app-root ::-webkit-scrollbar-track {
-  background: #0d1117;
+  background: var(--bg-main);
 }
 
 .app-root ::-webkit-scrollbar-thumb {
-  background: #30363d;
+  background: var(--border-medium);
   border-radius: 4px;
 }
 
 .app-root ::-webkit-scrollbar-thumb:hover {
-  background: #484f58;
+  background: var(--neon-purple);
+  box-shadow: var(--glow-soft);
 }
 
-/* Sidebar item */
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+.app-root h1,
+.app-root h2,
+.app-root h3 {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.app-gradient-text {
+  background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-magenta) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ========================================
+   SIDEBAR
+   ======================================== */
+
 .sidebar-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  color: #8b949e;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: var(--text-muted);
   font-size: 14px;
-  transition: all 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
 .sidebar-item:hover {
-  background: #161b22;
-  color: #e6edf3;
+  background: rgba(168, 85, 247, 0.08);
+  color: var(--text-primary);
   transform: translateX(2px);
 }
 
 .sidebar-item.active {
-  background: #161b22;
-  color: #e6edf3;
+  background: rgba(168, 85, 247, 0.12);
+  color: var(--text-primary);
   font-weight: 500;
 }
 
@@ -66,66 +195,215 @@
   top: 50%;
   transform: translateY(-50%);
   width: 3px;
-  height: 20px;
-  background: #3b82f6;
+  height: 22px;
+  background: linear-gradient(180deg, var(--neon-purple), var(--neon-magenta));
   border-radius: 0 2px 2px 0;
+  box-shadow: var(--glow-soft);
 }
 
-/* App-карточка */
+/* ========================================
+   CARDS
+   ======================================== */
+
 .app-card {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 8px;
-  transition: all 0.15s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 15, 48, 0.8) 0%,
+    rgba(19, 10, 36, 0.6) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(168, 85, 247, 0.4),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .app-card:hover {
-  border-color: #484f58;
+  border-color: var(--border-medium);
+  box-shadow: var(--glow-soft);
+  transform: translateY(-1px);
 }
 
-/* Кнопки */
+.app-card:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
 .app-btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 8px 16px;
-  background: #238636;
-  border: 1px solid #2ea043;
-  border-radius: 6px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-magenta) 100%);
+  border: none;
+  border-radius: 8px;
   color: white;
   font-size: 14px;
-  font-weight: 500;
-  transition: all 0.15s ease;
+  font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--neon-magenta) 0%, var(--neon-purple) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
 .app-btn-primary:hover {
-  background: #2ea043;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 30px rgba(168, 85, 247, 0.5);
+}
+
+.app-btn-primary:hover::before {
+  opacity: 1;
+}
+
+.app-btn-primary > * {
+  position: relative;
+  z-index: 1;
 }
 
 .app-btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
-  background: #21262d;
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  color: #e6edf3;
+  padding: 9px 18px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .app-btn-secondary:hover {
-  background: #30363d;
-  border-color: #484f58;
+  background: rgba(168, 85, 247, 0.15);
+  border-color: var(--border-strong);
+  box-shadow: var(--glow-soft);
 }
 
-/* Плавное появление */
+/* ========================================
+   STATS
+   ======================================== */
+
+.app-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-magenta) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   BADGE / STATUS
+   ======================================== */
+
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid var(--border-medium);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--neon-purple-soft);
+}
+
+.app-badge-pulse::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neon-purple);
+  box-shadow: 0 0 8px var(--neon-purple);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+/* ========================================
+   TAGS
+   ======================================== */
+
+.app-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--neon-purple-soft);
+  font-family: var(--font-jetbrains-mono), monospace;
+  transition: all 0.2s ease;
+}
+
+.app-tag:hover {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
 @keyframes appFadeIn {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -134,5 +412,14 @@
 }
 
 .app-fade-in {
-  animation: appFadeIn 0.3s ease-out;
+  animation: appFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   SELECTION
+   ======================================== */
+
+.app-root ::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: var(--text-primary);
 }

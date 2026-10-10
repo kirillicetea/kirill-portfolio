@@ -20,26 +20,31 @@ export default function AppLayout({ children }) {
     <div className="app-root min-h-screen" style={{ cursor: "auto" }}>
       <div className="flex">
         {/* Sidebar */}
-        <aside className="hidden md:flex flex-col w-60 fixed top-0 left-0 h-screen bg-[#161b22] border-r border-[#30363d] p-4">
+        <aside className="hidden md:flex flex-col w-60 fixed top-0 left-0 h-screen bg-[#130a24]/80 backdrop-blur-xl border-r border-[#a855f7]/15 p-4">
           {/* Логотип */}
           <Link
             href="/projects/it-stories/app"
             className="flex items-center gap-3 mb-8 px-2 group"
           >
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
-              IT
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#a855f7] to-[#ec4899] rounded-lg blur-md opacity-60 group-hover:opacity-100 transition-opacity" />
+              <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-[#a855f7] to-[#ec4899] flex items-center justify-center text-white font-bold text-sm">
+                IT
+              </div>
             </div>
             <div>
-              <div className="text-sm font-bold text-[#e6edf3] leading-tight">
+              <div className="text-sm font-bold text-[#f5f3ff] leading-tight">
                 Transition
               </div>
-              <div className="text-xs text-[#8b949e]">Stories</div>
+              <div className="text-xs text-[#7c6f9e] font-mono">
+                Stories
+              </div>
             </div>
           </Link>
 
           {/* Навигация */}
           <nav className="flex-1 space-y-1">
-            <Link href="/projects/it-stories/app" className="sidebar-item">
+            <Link href="/projects/it-stories/app" className="sidebar-item active">
               <FaCompass className="text-base" />
               <span>Обзор</span>
             </Link>
@@ -64,7 +69,7 @@ export default function AppLayout({ children }) {
           {/* CTA */}
           <Link
             href="/projects/it-stories/app/share"
-            className="app-btn-primary w-full justify-center mb-4"
+            className="app-btn-primary w-full mb-4"
           >
             <FaPen className="text-xs" />
             Поделиться
@@ -73,25 +78,25 @@ export default function AppLayout({ children }) {
           {/* Назад на сайт */}
           <Link
             href="/projects/it-stories"
-            className="flex items-center gap-2 text-xs text-[#8b949e] hover:text-[#e6edf3] transition-colors px-2 py-2"
+            className="flex items-center gap-2 text-xs text-[#7c6f9e] hover:text-[#a855f7] transition-colors px-2 py-2 font-mono"
           >
             <FaArrowLeft className="text-[10px]" />
-            На сайт
+            на сайт
           </Link>
         </aside>
 
         {/* Основная область */}
         <div className="flex-1 md:ml-60">
           {/* Мобильный хедер */}
-          <header className="md:hidden sticky top-0 z-40 bg-[#161b22] border-b border-[#30363d] px-4 py-3 flex items-center justify-between">
+          <header className="md:hidden sticky top-0 z-40 bg-[#130a24]/80 backdrop-blur-xl border-b border-[#a855f7]/15 px-4 py-3 flex items-center justify-between">
             <Link
               href="/projects/it-stories/app"
               className="flex items-center gap-2"
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white font-bold text-xs">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#a855f7] to-[#ec4899] flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-[#a855f7]/30">
                 IT
               </div>
-              <span className="text-sm font-bold text-[#e6edf3]">
+              <span className="text-sm font-bold text-[#f5f3ff]">
                 Transition
               </span>
             </Link>
