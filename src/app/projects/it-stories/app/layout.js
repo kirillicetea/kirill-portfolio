@@ -105,7 +105,7 @@ export default function AppLayout({ children }) {
           </header>
 
           {/* Контент */}
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen py-8 px-6">{children}</main>
         </div>
       </div>
     </div>
