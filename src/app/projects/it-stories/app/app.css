@@ -416,10 +416,52 @@
 }
 
 /* ========================================
-   SELECTION
+   REACT FLOW — стили
    ======================================== */
 
-.app-root ::selection {
-  background: rgba(168, 85, 247, 0.3);
-  color: var(--text-primary);
+/* Убираем скроллбары React Flow */
+.app-root .react-flow,
+.app-root .react-flow__renderer,
+.app-root .react-flow__pane,
+.app-root .react-flow__viewport,
+.app-root .react-flow__container {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.app-root .react-flow::-webkit-scrollbar,
+.app-root .react-flow__renderer::-webkit-scrollbar,
+.app-root .react-flow__pane::-webkit-scrollbar,
+.app-root .react-flow__viewport::-webkit-scrollbar,
+.app-root .react-flow__container::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Controls — фиолетовые */
+.app-root .react-flow__controls {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2) !important;
+}
+
+.app-root .react-flow__controls-button {
+  background: #130a24 !important;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2) !important;
+  color: #a855f7 !important;
+  transition: all 0.2s ease;
+}
+
+.app-root .react-flow__controls-button:hover {
+  background: #1a0f30 !important;
+  color: #ec4899 !important;
+}
+
+.app-root .react-flow__controls-button svg {
+  fill: currentColor !important;
+}
+
+/* MiniMap — фиолетовый */
+.app-root .react-flow__minimap-mask {
+  fill: rgba(10, 5, 20, 0.85) !important;
 }

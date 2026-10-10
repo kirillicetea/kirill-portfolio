@@ -3,23 +3,37 @@
 import { useMemo, useCallback, useEffect } from "react";
 import {
   ReactFlow,
+  ReactFlowProvider,
   Background,
   Controls,
   MiniMap,
   useNodesState,
   useEdgesState,
-  MarkerType,
+  useReactFlow,
   Handle,
   Position,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 
-// Кастомный узел — роль (Neo-Tokyo)
+// Кнопка «Показать всё»
+function FitViewButton() {
+  const { fitView } = useReactFlow();
+  return (
+    <button
+      onClick={() => fitView({ padding: 0.05, duration: 600 })}
+      className="absolute top-4 right-4 z-10 px-3 py-2 bg-[#130a24]/90 backdrop-blur-xl border border-[#a855f7]/30 rounded-lg text-xs font-mono text-[#a78bfa] hover:text-[#a855f7] hover:border-[#a855f7]/60 transition-all"
+    >
+      показать всё
+    </button>
+  );
+}
+
+// Кастомный узел — роль (компактнее)
 function RoleNode({ data }) {
   const isFrom = data.side === "from";
   return (
     <div
-      className={`relative px-5 py-4 rounded-xl border-2 transition-all cursor-pointer ${
+      className={`relative px-4 py-3 rounded-lg border-2 transition-all cursor-pointer ${
         data.highlighted
           ? "bg-[#a855f7]/25 border-[#a855f7] shadow-[0_0_30px_rgba(168,85,247,0.6)] scale-105"
           : isFrom
@@ -33,21 +47,21 @@ function RoleNode({ data }) {
           position={Position.Left}
           style={{
             background: "#a855f7",
-            width: 10,
-            height: 10,
+            width: 8,
+            height: 8,
             border: "2px solid #0a0514",
             boxShadow: "0 0 8px #a855f7",
           }}
         />
       )}
 
-      <div className="text-xs uppercase tracking-wider text-[#7c6f9e] mb-1 font-mono">
+      <div className="text-[10px] uppercase tracking-wider text-[#7c6f9e] mb-0.5 font-mono">
         {isFrom ? "Из" : "В"}
       </div>
-      <div className="text-sm font-bold text-[#f5f3ff] whitespace-nowrap">
+      <div className="text-xs font-bold text-[#f5f3ff] whitespace-nowrap">
         {data.label}
       </div>
-      <div className="text-xs text-[#a78bfa] mt-1">
+      <div className="text-[10px] text-[#a78bfa] mt-0.5">
         {data.count} {data.count === 1 ? "история" : "историй"}
       </div>
 
@@ -57,8 +71,8 @@ function RoleNode({ data }) {
           position={Position.Right}
           style={{
             background: "#a855f7",
-            width: 10,
-            height: 10,
+            width: 8,
+            height: 8,
             border: "2px solid #0a0514",
             boxShadow: "0 0 8px #a855f7",
           }}
@@ -68,13 +82,11 @@ function RoleNode({ data }) {
   );
 }
 
-// ВАЖНО: определяем снаружи компонента, чтобы React Flow не ругался
 const NODE_TYPES = { role: RoleNode };
 
-export default function TransitionMap({ stories, onNodeClick, selectedRole }) {
+function TransitionMapInner({ stories, onNodeClick, selectedRole }) {
   const nodeTypes = useMemo(() => NODE_TYPES, []);
 
-  // Строим узлы и рёбра из историй
   const { initialNodes, initialEdges } = useMemo(() => {
     const rolesMap = new Map();
     const transitionsMap = new Map();
@@ -91,7 +103,6 @@ export default function TransitionMap({ stories, onNodeClick, selectedRole }) {
       }
     });
 
-    // Раскладка: роли «откуда» слева, «куда» справа
     const fromRoles = new Set();
     const toRoles = new Set();
 
@@ -109,7 +120,7 @@ export default function TransitionMap({ stories, onNodeClick, selectedRole }) {
       nodes.push({
         id: role,
         type: "role",
-        position: { x: 50, y: i * 150 + 100 },
+        position: { x: 0, y: i * 100 },
         data: {
           label: role,
           count: rolesMap.get(role) || 0,
@@ -123,7 +134,7 @@ export default function TransitionMap({ stories, onNodeClick, selectedRole }) {
       nodes.push({
         id: role,
         type: "role",
-        position: { x: 500, y: i * 150 + 100 },
+        position: { x: 500, y: i * 100 },
         data: {
           label: role,
           count: rolesMap.get(role) || 0,
@@ -140,19 +151,24 @@ export default function TransitionMap({ stories, onNodeClick, selectedRole }) {
           id: `edge-${i}`,
           source: from,
           target: to,
-          animated: true,
           type: "smoothstep",
+          animated: true,
           style: {
             stroke: "#a855f7",
-            strokeWidth: 2.5,
-            filter: "drop-shadow(0 0 6px rgba(168, 85, 247, 0.8))",
+            strokeWidth: 2,
           },
-          markerEnd: {
-            type: MarkerType.ArrowClosed,
-            color: "#a855f7",
-            width: 20,
-            height: 20,
+          label: `${count}`,
+          labelStyle: {
+            fill: "#f5f3ff",
+            fontWeight: 700,
+            fontSize: 11,
           },
+          labelBgStyle: {
+            fill: "#1a0f30",
+            fillOpacity: 1,
+          },
+          labelBgPadding: [6, 4],
+          labelBgBorderRadius: 4,
         };
       }
     );
@@ -162,11 +178,19 @@ export default function TransitionMap({ stories, onNodeClick, selectedRole }) {
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const { fitView } = useReactFlow();
 
-  // Обновляем узлы при изменении selectedRole
   useEffect(() => {
     setNodes(initialNodes);
   }, [initialNodes, setNodes]);
+
+  // Авто-fit — центрируем карту после рендера
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      fitView({ padding: 0.1, duration: 400 });
+    }, 150);
+    return () => clearTimeout(timeout);
+  }, [initialNodes, fitView]);
 
   const handleNodeClick = useCallback(
     (event, node) => {
@@ -188,7 +212,7 @@ export default function TransitionMap({ stories, onNodeClick, selectedRole }) {
   }
 
   return (
-    <div className="app-card overflow-hidden" style={{ height: "600px" }}>
+    <div className="app-card h-[500px] md:h-[600px] relative">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -197,6 +221,9 @@ export default function TransitionMap({ stories, onNodeClick, selectedRole }) {
         onNodeClick={handleNodeClick}
         nodeTypes={nodeTypes}
         fitView
+        fitViewOptions={{ padding: 0.1 }}
+        minZoom={0.2}
+        maxZoom={1.5}
         attributionPosition="bottom-right"
         proOptions={{ hideAttribution: true }}
       >
@@ -206,11 +233,25 @@ export default function TransitionMap({ stories, onNodeClick, selectedRole }) {
           showInteractive={false}
         />
         <MiniMap
-          className="!bg-[#0a0514] !border-[#a855f7]/30 !rounded-lg"
+          className="!bg-[#0a0514]/90 !border !border-[#a855f7]/30 !rounded-lg"
           nodeColor="#a855f7"
+          nodeStrokeColor="#ec4899"
+          nodeBorderRadius={4}
           maskColor="rgba(10, 5, 20, 0.85)"
+          pannable
+          zoomable
+          style={{ width: 120, height: 80 }}
         />
       </ReactFlow>
+      <FitViewButton />
     </div>
+  );
+}
+
+export default function TransitionMap(props) {
+  return (
+    <ReactFlowProvider>
+      <TransitionMapInner {...props} />
+    </ReactFlowProvider>
   );
 }

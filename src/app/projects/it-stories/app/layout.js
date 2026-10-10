@@ -19,7 +19,7 @@ export default function AppLayout({ children }) {
   return (
     <div className="app-root min-h-screen" style={{ cursor: "auto" }}>
       <div className="flex">
-        {/* Sidebar */}
+        {/* Sidebar — только на десктопе */}
         <aside className="hidden md:flex flex-col w-60 fixed top-0 left-0 h-screen bg-[#130a24]/80 backdrop-blur-xl border-r border-[#a855f7]/15 p-4">
           {/* Логотип */}
           <Link
@@ -36,9 +36,7 @@ export default function AppLayout({ children }) {
               <div className="text-sm font-bold text-[#f5f3ff] leading-tight">
                 Transition
               </div>
-              <div className="text-xs text-[#7c6f9e] font-mono">
-                Stories
-              </div>
+              <div className="text-xs text-[#7c6f9e] font-mono">Stories</div>
             </div>
           </Link>
 
@@ -87,8 +85,8 @@ export default function AppLayout({ children }) {
 
         {/* Основная область */}
         <div className="flex-1 md:ml-60">
-          {/* Мобильный хедер */}
-          <header className="md:hidden sticky top-0 z-40 bg-[#130a24]/80 backdrop-blur-xl border-b border-[#a855f7]/15 px-4 py-3 flex items-center justify-between">
+          {/* Мобильный хедер — только на мобилке */}
+          <header className="md:hidden sticky top-0 z-40 bg-[#130a24]/90 backdrop-blur-xl border-b border-[#a855f7]/15 px-4 py-3 flex items-center justify-between">
             <Link
               href="/projects/it-stories/app"
               className="flex items-center gap-2"
@@ -101,16 +99,62 @@ export default function AppLayout({ children }) {
               </span>
             </Link>
             <Link
-              href="/projects/it-stories/app/share"
-              className="app-btn-primary text-xs px-3 py-1.5"
+              href="/projects/it-stories"
+              className="text-xs text-[#7c6f9e] hover:text-[#a855f7] transition-colors font-mono flex items-center gap-1"
             >
-              <FaPen className="text-[10px]" />
-              Поделиться
+              <FaArrowLeft className="text-[10px]" />
+              на сайт
             </Link>
           </header>
 
           {/* Контент */}
-          <main className="min-h-screen py-8 px-6">{children}</main>
+          <main className="min-h-screen py-8 px-6 pb-24 md:pb-8">
+            {children}
+          </main>
+
+          {/* Нижняя навигация — только на мобилке */}
+          <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#130a24]/95 backdrop-blur-xl border-t border-[#a855f7]/15">
+            <div className="grid grid-cols-4 gap-0">
+              <Link
+                href="/projects/it-stories/app"
+                className="flex flex-col items-center gap-1 py-3 text-[#7c6f9e] hover:text-[#a855f7] transition-colors"
+              >
+                <FaCompass className="text-lg" />
+                <span className="text-[10px] font-mono uppercase tracking-wider">
+                  Обзор
+                </span>
+              </Link>
+              <Link
+                href="/projects/it-stories/app/feed"
+                className="flex flex-col items-center gap-1 py-3 text-[#7c6f9e] hover:text-[#a855f7] transition-colors"
+              >
+                <FaBook className="text-lg" />
+                <span className="text-[10px] font-mono uppercase tracking-wider">
+                  Лента
+                </span>
+              </Link>
+              <Link
+                href="/projects/it-stories/app/tags"
+                className="flex flex-col items-center gap-1 py-3 text-[#7c6f9e] hover:text-[#a855f7] transition-colors"
+              >
+                <FaTags className="text-lg" />
+                <span className="text-[10px] font-mono uppercase tracking-wider">
+                  Теги
+                </span>
+              </Link>
+              <Link
+                href="/projects/it-stories/app/share"
+                className="flex flex-col items-center gap-1 py-3 text-[#a855f7] transition-colors relative"
+              >
+                <div className="absolute -top-3 w-12 h-12 rounded-full bg-gradient-to-br from-[#a855f7] to-[#ec4899] flex items-center justify-center shadow-lg shadow-[#a855f7]/40 border-4 border-[#0a0514]">
+                  <FaPen className="text-white text-base" />
+                </div>
+                <span className="text-[10px] font-mono uppercase tracking-wider mt-6">
+                  Поделиться
+                </span>
+              </Link>
+            </div>
+          </nav>
         </div>
       </div>
     </div>
