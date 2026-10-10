@@ -9,7 +9,9 @@ import PmPlayground from "./PmPlayground";
 
 export default function AppShell({ children }) {
   const pathname = usePathname();
-  const isApp = pathname?.startsWith("/projects/it-stories/app");
+  const isApp =
+  pathname?.startsWith("/projects/it-stories/app") ||
+  pathname?.startsWith("/admin");
 
   useEffect(() => {
     if (isApp) {
