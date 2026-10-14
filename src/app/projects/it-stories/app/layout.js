@@ -13,6 +13,15 @@ import {
 export const metadata = {
   title: "IT Transition Stories",
   description: "Реальные истории перехода в IT",
+  icons: {
+    icon: [
+      { url: "/it-icon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/it-icon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/it-icon/favicon.ico", sizes: "any" },
+    ],
+    apple: "/it-icon/apple-touch-icon.png",
+  },
+  manifest: "/it-icon/site.webmanifest",
 };
 
 export default function AppLayout({ children }) {
