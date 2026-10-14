@@ -5,6 +5,7 @@ import {
   FaBook,
   FaTags,
   FaUsers,
+  FaUser,
   FaInfoCircle,
   FaPen,
   FaArrowLeft,
@@ -66,6 +67,10 @@ export default function AppLayout({ children }) {
             <Link href="/projects/it-stories/app/authors" className="sidebar-item">
               <FaUsers className="text-base" />
               <span>Авторы</span>
+            </Link>
+            <Link href="/projects/it-stories/app/my-stories" className="sidebar-item">
+              <FaUser className="text-base" />
+              <span>Мои истории</span>
             </Link>
             <Link href="/projects/it-stories" className="sidebar-item">
               <FaInfoCircle className="text-base" />

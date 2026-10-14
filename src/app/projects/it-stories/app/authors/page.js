@@ -65,33 +65,32 @@ export default async function AuthorsPage() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {sortedAuthors.map(([name, info]) => (
-            <div key={name} className="app-card p-5">
+            <Link
+              key={name}
+              href={`/projects/it-stories/app/authors/${encodeURIComponent(
+                name
+              )}`}
+              className="app-card p-5 group block"
+            >
               <div className="flex items-start gap-4">
                 {/* Аватар — инициал */}
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#a855f7] to-[#ec4899] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#a855f7] to-[#ec4899] flex items-center justify-center text-white font-bold text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
                   {name.charAt(0).toUpperCase()}
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-bold text-[#f5f3ff] mb-1 truncate">
+                  <h3 className="text-base font-bold text-[#f5f3ff] mb-1 truncate group-hover:text-[#a855f7] transition-colors">
                     {name}
                   </h3>
                   <p className="text-xs text-[#7c6f9e] font-mono mb-3">
                     {info.count} {info.count === 1 ? "история" : "историй"}
                   </p>
-                  {info.social && (
-                    <a
-                      href={info.social}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-[#a855f7] hover:text-[#ec4899] font-semibold transition-colors inline-flex items-center gap-1"
-                    >
-                      Связаться <FaArrowRight className="text-[10px]" />
-                    </a>
-                  )}
+                  <span className="text-xs text-[#a855f7] group-hover:text-[#ec4899] font-semibold transition-colors inline-flex items-center gap-1">
+                    Профиль <FaArrowRight className="text-[10px]" />
+                  </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}

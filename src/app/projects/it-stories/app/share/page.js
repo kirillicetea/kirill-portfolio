@@ -102,6 +102,15 @@ export default function SharePage() {
     }
 
     setStatus("success");
+
+    // Сохраняем email в localStorage — для страницы "Мои истории"
+    if (formData.author_email?.trim()) {
+      localStorage.setItem(
+        "author_email",
+        formData.author_email.trim().toLowerCase()
+      );
+    }
+
     setFormData({
       author_name: "",
       author_email: "",
@@ -128,7 +137,13 @@ export default function SharePage() {
           ленте и на карте переходов.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <Link href="/projects/it-stories/app/feed" className="app-btn-primary">
+          <Link
+            href="/projects/it-stories/app/my-stories"
+            className="app-btn-primary"
+          >
+            Мои истории
+          </Link>
+          <Link href="/projects/it-stories/app/feed" className="app-btn-secondary">
             Все истории
           </Link>
           <button
@@ -188,7 +203,7 @@ export default function SharePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs uppercase tracking-wider text-[#7c6f9e] font-mono mb-2">
-              Email (не публикуется)
+              Email (для «Моих историй»)
             </label>
             <input
               type="email"

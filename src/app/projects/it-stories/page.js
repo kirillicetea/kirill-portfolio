@@ -6,7 +6,6 @@ import {
   FaGithub,
   FaBullseye,
   FaUsers,
-  FaTags,
   FaCode,
   FaLightbulb,
   FaChartLine,
@@ -80,11 +79,10 @@ export default async function ItStoriesCasePage() {
 
           <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl">
             Платформа реальных историй перехода в IT. Люди делятся опытом,
-            читают чужие пути и видят карту переходов — от учителя к Python-разработчику,
-            от бухгалтера к аналитику.
+            читают чужие пути и видят карту переходов — от учителя к
+            Python-разработчику, от бухгалтера к аналитику.
           </p>
 
-          {/* Кнопки */}
           <div className="flex flex-wrap gap-4 mb-12">
             <Link
               href="/projects/it-stories/app"
@@ -163,11 +161,17 @@ export default async function ItStoriesCasePage() {
               IT Transition Stories — платформа, где каждый может поделиться
               своим путём в IT и найти поддержку. Главная особенность —
               <strong className="text-white"> визуальная карта переходов</strong>:
-              пользователь видит не просто список историй, а граф «откуда → куда»,
-              где каждая стрелка — реальный путь человека.
+              пользователь видит не просто список историй, а граф «откуда →
+              куда», где каждая стрелка — реальный путь человека.
             </p>
             <div className="flex flex-wrap gap-2">
-              {["Карта переходов", "UGC-платформа", "Модерация", "Neo-Tokyo дизайн", "Транслит slug"].map((tag) => (
+              {[
+                "Карта переходов",
+                "UGC-платформа",
+                "Модерация",
+                "Neo-Tokyo дизайн",
+                "Транслит slug",
+              ].map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-blue-300"
@@ -196,22 +200,22 @@ export default async function ItStoriesCasePage() {
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">▸</span>
                 <span>
-                  <strong className="text-white">Разработчик</strong> —
-                  Next.js 16, React 19, Supabase, React Flow
+                  <strong className="text-white">Разработчик</strong> — Next.js
+                  16, React 19, Supabase, React Flow
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">▸</span>
                 <span>
-                  <strong className="text-white">Дизайнер</strong> —
-                  Neo-Tokyo дизайн-система с нуля, UI/UX, анимации
+                  <strong className="text-white">Дизайнер</strong> — Neo-Tokyo
+                  дизайн-система с нуля, UI/UX, анимации
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">▸</span>
                 <span>
                   <strong className="text-white">Модератор</strong> — проверяю
-                  и публикую истории, работаю с RLS-политиками
+                  и публикую истории и комментарии, работаю с RLS-политиками
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -238,16 +242,43 @@ export default async function ItStoriesCasePage() {
                 </h3>
                 <p className="text-sm text-slate-400">
                   Визуальный граф на React Flow. Узлы — профессии, стрелки —
-                  переходы. Клик на узел — фильтр историй.
+                  реальные пути. Клик на узел — фильтр историй.
                 </p>
               </div>
               <div className="glass rounded-2xl p-5">
                 <h3 className="text-base font-bold text-white mb-2">
-                  📝 Форма подачи
+                  📝 Форма подачи историй
                 </h3>
                 <p className="text-sm text-slate-400">
-                  Пользователи отправляют истории. Валидация, транслитерация slug,
-                  автосохранение в Supabase.
+                  UGC: пользователи отправляют свои истории. Транслитерация
+                  slug, автосохранение в Supabase со статусом pending.
+                </p>
+              </div>
+              <div className="glass rounded-2xl p-5">
+                <h3 className="text-base font-bold text-white mb-2">
+                  🔍 Поиск и фильтры
+                </h3>
+                <p className="text-sm text-slate-400">
+                  Клиентский поиск с debounce — по заголовку, тексту, автору,
+                  тегам. Фильтр по тегам через URL (?tag=PM).
+                </p>
+              </div>
+              <div className="glass rounded-2xl p-5">
+                <h3 className="text-base font-bold text-white mb-2">
+                  ❤️ Лайки и просмотры
+                </h3>
+                <p className="text-sm text-slate-400">
+                  Toggle лайков с защитой через localStorage. Счётчик
+                  просмотров растёт при каждом открытии истории.
+                </p>
+              </div>
+              <div className="glass rounded-2xl p-5">
+                <h3 className="text-base font-bold text-white mb-2">
+                  💬 Комментарии
+                </h3>
+                <p className="text-sm text-slate-400">
+                  Пользователи оставляют комментарии под историями. Все проходят
+                  модерацию через админ-панель.
                 </p>
               </div>
               <div className="glass rounded-2xl p-5">
@@ -255,17 +286,18 @@ export default async function ItStoriesCasePage() {
                   🔒 Админ-панель
                 </h3>
                 <p className="text-sm text-slate-400">
-                  Модерация: одобрить/отклонить. Фильтры по статусу. Защита
-                  паролем через переменные окружения.
+                  Модерация историй и комментариев. Две вкладки, фильтры по
+                  статусу, защита паролем через переменные окружения.
                 </p>
               </div>
-              <div className="glass rounded-2xl p-5">
+              <div className="glass rounded-2xl p-5 md:col-span-2">
                 <h3 className="text-base font-bold text-white mb-2">
-                  🏷 Теги и авторы
+                  👤 «Мои истории» + профили авторов
                 </h3>
                 <p className="text-sm text-slate-400">
-                  Отдельные страницы со списками. Счётчики историй, аватары с
-                  инициалами, ссылки на соцсети.
+                  Личный кабинет автора через localStorage — свои истории со
+                  статусами (опубликовано / на модерации / отклонено). Публичные
+                  профили авторов со всеми историями.
                 </p>
               </div>
             </div>
@@ -290,8 +322,9 @@ export default async function ItStoriesCasePage() {
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">▸</span>
                 <span>
-                  <strong className="text-white">Данные:</strong> настроил RLS-политики,
-                  научился работать с Supabase на клиенте и сервере
+                  <strong className="text-white">Данные:</strong> настроил
+                  RLS-политики, научился работать с Supabase на клиенте и
+                  сервере
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -304,15 +337,16 @@ export default async function ItStoriesCasePage() {
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">▸</span>
                 <span>
-                  <strong className="text-white">UX:</strong> понял разницу между
-                  лендингом и приложением — sidebar, плотность, фокус на контенте
+                  <strong className="text-white">UX:</strong> понял разницу
+                  между лендингом и приложением — sidebar, плотность, фокус на
+                  контенте
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">▸</span>
                 <span>
-                  <strong className="text-white">Продукт:</strong> сделал UGC-платформу
-                  с модерацией — не блог, а двустороннее движение
+                  <strong className="text-white">Продукт:</strong> сделал
+                  UGC-платформу с модерацией историй и комментариев
                 </span>
               </li>
             </ul>
@@ -329,7 +363,7 @@ export default async function ItStoriesCasePage() {
                 <span className="text-green-400 text-lg">✓</span>
                 <div>
                   <div className="text-sm font-semibold text-white">
-                    MVP: карта, лента, форма, админка
+                    MVP: карта переходов, лента, форма, админка
                   </div>
                   <div className="text-xs text-slate-400">Сделано</div>
                 </div>
@@ -338,36 +372,65 @@ export default async function ItStoriesCasePage() {
                 <span className="text-green-400 text-lg">✓</span>
                 <div>
                   <div className="text-sm font-semibold text-white">
-                    Neo-Tokyo дизайн + правая панель
+                    Neo-Tokyo дизайн-система + правая панель
                   </div>
                   <div className="text-xs text-slate-400">Сделано</div>
                 </div>
               </div>
               <div className="glass rounded-2xl p-4 flex items-start gap-3">
-                <span className="text-yellow-400 text-lg">◐</span>
+                <span className="text-green-400 text-lg">✓</span>
                 <div>
                   <div className="text-sm font-semibold text-white">
                     Поиск по историям + фильтры по тегам
                   </div>
-                  <div className="text-xs text-slate-400">В планах</div>
+                  <div className="text-xs text-slate-400">Сделано</div>
                 </div>
               </div>
               <div className="glass rounded-2xl p-4 flex items-start gap-3">
-                <span className="text-slate-500 text-lg">○</span>
+                <span className="text-green-400 text-lg">✓</span>
                 <div>
                   <div className="text-sm font-semibold text-white">
-                    Комментарии и лайки
+                    Лайки, просмотры, комментарии + модерация
                   </div>
-                  <div className="text-xs text-slate-400">Будущее</div>
+                  <div className="text-xs text-slate-400">Сделано</div>
                 </div>
               </div>
               <div className="glass rounded-2xl p-4 flex items-start gap-3">
-                <span className="text-slate-500 text-lg">○</span>
+                <span className="text-green-400 text-lg">✓</span>
                 <div>
                   <div className="text-sm font-semibold text-white">
-                    Авторизация авторов через email
+                    Мобильная версия с нижней навигацией
                   </div>
-                  <div className="text-xs text-slate-400">Будущее</div>
+                  <div className="text-xs text-slate-400">Сделано</div>
+                </div>
+              </div>
+              <div className="glass rounded-2xl p-4 flex items-start gap-3">
+                <span className="text-green-400 text-lg">✓</span>
+                <div>
+                  <div className="text-sm font-semibold text-white">
+                    «Мои истории» автора + профили авторов
+                  </div>
+                  <div className="text-xs text-slate-400">Сделано</div>
+                </div>
+              </div>
+
+              <div className="glass rounded-2xl p-4 flex items-start gap-3 border border-[#a855f7]/30">
+                <span className="text-[#a855f7] text-lg">💡</span>
+                <div>
+                  <div className="text-sm font-semibold text-white">
+                    Есть идея, как улучшить проект?
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    Буду рад предложениям — напишите в{" "}
+                    <a
+                      href="https://t.me/kirill_icetea"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#a855f7] hover:text-[#ec4899] underline transition-colors"
+                    >
+                      Telegram
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

@@ -216,14 +216,65 @@ export default function Home() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
                 </span>
-                В разработке
+                Живой проект
               </span>
             </div>
 
-            {/* Обложка с градиентом и иконкой */}
-            <div className="relative h-56 overflow-hidden bg-gradient-to-br from-blue-600/30 via-cyan-500/20 to-purple-500/20 flex items-center justify-center">
-  <FaRocket className="text-7xl text-blue-400/60 group-hover:scale-110 group-hover:text-blue-400 transition-all duration-500" />
-  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] to-transparent" />
+            {/* Обложка — граф переходов */}
+<div className="relative h-56 overflow-hidden bg-gradient-to-br from-[#0a0514] via-[#1a0f30] to-[#2d1458]">
+  <div
+    className="absolute inset-0 opacity-30"
+    style={{
+      backgroundImage:
+        "linear-gradient(rgba(168, 85, 247, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.3) 1px, transparent 1px)",
+      backgroundSize: "20px 20px",
+    }}
+  />
+
+  <svg
+    className="absolute inset-0 w-full h-full"
+    viewBox="0 0 400 220"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <defs>
+      <linearGradient id="lineGradHome" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#a855f7" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#ec4899" stopOpacity="0.9" />
+      </linearGradient>
+      <linearGradient id="nodeGradHome" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#a855f7" stopOpacity="0.25" />
+        <stop offset="100%" stopColor="#ec4899" stopOpacity="0.15" />
+      </linearGradient>
+    </defs>
+
+    <line x1="95" y1="60" x2="240" y2="60" stroke="url(#lineGradHome)" strokeWidth="2" strokeDasharray="5 4" />
+    <line x1="95" y1="110" x2="240" y2="110" stroke="url(#lineGradHome)" strokeWidth="2" strokeDasharray="5 4" />
+    <line x1="95" y1="160" x2="240" y2="160" stroke="url(#lineGradHome)" strokeWidth="2" strokeDasharray="5 4" />
+
+    <polygon points="235,54 248,60 235,66" fill="#ec4899" />
+    <polygon points="235,104 248,110 235,116" fill="#ec4899" />
+    <polygon points="235,154 248,160 235,166" fill="#ec4899" />
+
+    <rect x="25" y="45" width="70" height="30" rx="6" fill="#1a0f30" stroke="#a855f7" strokeOpacity="0.5" strokeWidth="1.5" />
+    <text x="60" y="64" textAnchor="middle" fill="#a78bfa" fontSize="10" fontFamily="monospace">Из</text>
+
+    <rect x="25" y="95" width="70" height="30" rx="6" fill="#1a0f30" stroke="#a855f7" strokeOpacity="0.5" strokeWidth="1.5" />
+    <text x="60" y="114" textAnchor="middle" fill="#a78bfa" fontSize="10" fontFamily="monospace">Из</text>
+
+    <rect x="25" y="145" width="70" height="30" rx="6" fill="#1a0f30" stroke="#a855f7" strokeOpacity="0.5" strokeWidth="1.5" />
+    <text x="60" y="164" textAnchor="middle" fill="#a78bfa" fontSize="10" fontFamily="monospace">Из</text>
+
+    <rect x="255" y="45" width="100" height="30" rx="6" fill="url(#nodeGradHome)" stroke="#a855f7" strokeWidth="1.5" />
+    <text x="305" y="64" textAnchor="middle" fill="#f5f3ff" fontSize="10" fontFamily="monospace" fontWeight="bold">Python</text>
+
+    <rect x="255" y="95" width="100" height="30" rx="6" fill="url(#nodeGradHome)" stroke="#a855f7" strokeWidth="1.5" />
+    <text x="305" y="114" textAnchor="middle" fill="#f5f3ff" fontSize="10" fontFamily="monospace" fontWeight="bold">PM</text>
+
+    <rect x="255" y="145" width="100" height="30" rx="6" fill="url(#nodeGradHome)" stroke="#a855f7" strokeWidth="1.5" />
+    <text x="305" y="164" textAnchor="middle" fill="#f5f3ff" fontSize="10" fontFamily="monospace" fontWeight="bold">DevOps</text>
+  </svg>
+
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent pointer-events-none" />
 </div>
 
             {/* Контент */}
