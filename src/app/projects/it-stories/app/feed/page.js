@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { supabase } from "@/app/lib/supabase";
-import { FaArrowRight, FaSearch } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
+import FeedList from "./FeedList";
 
 export const metadata = {
   title: "Лента историй — IT Transition Stories",
@@ -9,35 +10,76 @@ export const metadata = {
 
 export const revalidate = 60;
 
-export default async function FeedPage() {
+export default async function FeedPage({ searchParams }) {
+  const params = await searchParams;
+  const activeTag = params?.tag || null;
+
   const { data: stories, error } = await supabase
     .from("stories")
     .select("*")
     .eq("status", "published")
     .order("published_at", { ascending: false });
 
+  // Собираем все уникальные теги
+  const allTags = stories
+    ? [...new Set(stories.flatMap((s) => s.tags || []))].sort()
+    : [];
+
   return (
     <div className="max-w-4xl mx-auto">
       {/* Заголовок */}
-      <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#e6edf3] mb-2">
+      <div className="mb-6">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#f5f3ff] mb-2">
           Лента историй
         </h1>
-        <p className="text-[#8b949e]">
-          Все истории перехода в IT — от новых к старым
+        <p className="text-[#a78bfa]">
+          {activeTag
+            ? `Истории по теме #${activeTag}`
+            : "Все истории перехода в IT — от новых к старым"}
         </p>
       </div>
 
-      {/* Поиск */}
-      <div className="mb-6 relative">
-        <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8b949e] text-sm" />
-        <input
-          type="text"
-          placeholder="Поиск по историям (скоро)..."
-          disabled
-          className="w-full pl-10 pr-4 py-2.5 bg-[#161b22] border border-[#30363d] rounded-lg text-[#e6edf3] placeholder-[#8b949e] focus:border-blue-500 focus:outline-none opacity-60 cursor-not-allowed text-sm"
-        />
-      </div>
+      {/* Фильтр по тегам */}
+      {allTags.length > 0 && (
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-xs uppercase tracking-wider text-[#7c6f9e] font-mono">
+              Теги
+            </span>
+            {activeTag && (
+              <Link
+                href="/projects/it-stories/app/feed"
+                className="inline-flex items-center gap-1 text-xs text-[#ec4899] hover:text-[#a855f7] transition-colors"
+              >
+                <FaTimes className="text-[10px]" />
+                сбросить
+              </Link>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {allTags.map((tag) => {
+              const isActive = tag === activeTag;
+              return (
+                <Link
+                  key={tag}
+                  href={
+                    isActive
+                      ? "/projects/it-stories/app/feed"
+                      : `/projects/it-stories/app/feed?tag=${encodeURIComponent(tag)}`
+                  }
+                  className={`app-tag ${
+                    isActive
+                      ? "!bg-[#a855f7]/30 !border-[#a855f7] !text-[#f5f3ff]"
+                      : ""
+                  }`}
+                >
+                  #{tag}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Ошибка */}
       {error && (
@@ -46,48 +88,8 @@ export default async function FeedPage() {
         </div>
       )}
 
-      {/* Пусто */}
-      {!error && stories?.length === 0 && (
-        <div className="app-card p-12 text-center border-dashed">
-          <p className="text-[#8b949e]">Пока нет историй. Стань первым!</p>
-        </div>
-      )}
-
-      {/* Лента */}
-      {stories && stories.length > 0 && (
-        <div className="space-y-3">
-          {stories.map((story) => (
-            <Link
-              key={story.id}
-              href={`/projects/it-stories/app/${story.slug}`}
-              className="app-card block p-5 md:p-6 hover:border-blue-500 transition-all group"
-            >
-              <h2 className="text-lg md:text-xl font-bold text-[#e6edf3] mb-2 group-hover:text-blue-400 transition-colors">
-                {story.title}
-              </h2>
-              <p className="text-sm text-[#8b949e] mb-3">
-                Автор: <span className="text-[#e6edf3]">{story.author_name}</span>
-              </p>
-              <p className="text-[#c9d1d9] leading-relaxed line-clamp-2 mb-3 text-sm">
-                {story.content}
-              </p>
-              <div className="flex flex-wrap items-center gap-2">
-                {story.tags?.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 rounded text-blue-300"
-                  >
-                    {tag}
-                  </span>
-                ))}
-                <span className="ml-auto inline-flex items-center gap-1 text-blue-400 text-xs font-semibold group-hover:gap-2 transition-all">
-                  Читать <FaArrowRight className="text-[10px]" />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
+      {/* Лента с поиском (клиентский компонент) */}
+      {stories && <FeedList stories={stories} activeTag={activeTag} />}
     </div>
   );
 }

@@ -15,7 +15,6 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 
-// Кнопка «Показать всё»
 function FitViewButton() {
   const { fitView } = useReactFlow();
   return (
@@ -28,12 +27,11 @@ function FitViewButton() {
   );
 }
 
-// Кастомный узел — роль (компактнее)
 function RoleNode({ data }) {
   const isFrom = data.side === "from";
   return (
     <div
-      className={`relative px-4 py-3 rounded-lg border-2 transition-all cursor-pointer ${
+      className={`relative px-3 py-2 rounded-lg border-2 transition-all cursor-pointer ${
         data.highlighted
           ? "bg-[#a855f7]/25 border-[#a855f7] shadow-[0_0_30px_rgba(168,85,247,0.6)] scale-105"
           : isFrom
@@ -55,13 +53,13 @@ function RoleNode({ data }) {
         />
       )}
 
-      <div className="text-[10px] uppercase tracking-wider text-[#7c6f9e] mb-0.5 font-mono">
+      <div className="text-[9px] uppercase tracking-wider text-[#7c6f9e] font-mono">
         {isFrom ? "Из" : "В"}
       </div>
-      <div className="text-xs font-bold text-[#f5f3ff] whitespace-nowrap">
+      <div className="text-[11px] font-bold text-[#f5f3ff] whitespace-nowrap">
         {data.label}
       </div>
-      <div className="text-[10px] text-[#a78bfa] mt-0.5">
+      <div className="text-[9px] text-[#a78bfa]">
         {data.count} {data.count === 1 ? "история" : "историй"}
       </div>
 
@@ -103,6 +101,7 @@ function TransitionMapInner({ stories, onNodeClick, selectedRole }) {
       }
     });
 
+    // Собираем ВСЕ роли — и как «откуда», и как «куда» (без исключения дублей)
     const fromRoles = new Set();
     const toRoles = new Set();
 
@@ -112,15 +111,16 @@ function TransitionMapInner({ stories, onNodeClick, selectedRole }) {
     });
 
     const fromList = Array.from(fromRoles);
-    const toList = Array.from(toRoles).filter((r) => !fromRoles.has(r));
+    const toList = Array.from(toRoles);
 
     const nodes = [];
 
+    // ЛЕВЫЕ УЗЛЫ — id с префиксом "from-"
     fromList.forEach((role, i) => {
       nodes.push({
-        id: role,
+        id: `from-${role}`,
         type: "role",
-        position: { x: 0, y: i * 100 },
+        position: { x: 0, y: i * 80 },
         data: {
           label: role,
           count: rolesMap.get(role) || 0,
@@ -130,11 +130,12 @@ function TransitionMapInner({ stories, onNodeClick, selectedRole }) {
       });
     });
 
+    // ПРАВЫЕ УЗЛЫ — id с префиксом "to-"
     toList.forEach((role, i) => {
       nodes.push({
-        id: role,
+        id: `to-${role}`,
         type: "role",
-        position: { x: 500, y: i * 100 },
+        position: { x: 500, y: i * 80 },
         data: {
           label: role,
           count: rolesMap.get(role) || 0,
@@ -144,13 +145,14 @@ function TransitionMapInner({ stories, onNodeClick, selectedRole }) {
       });
     });
 
+    // Рёбра — source и target с префиксами
     const edges = Array.from(transitionsMap.entries()).map(
       ([key, count], i) => {
         const [from, to] = key.split("→");
         return {
           id: `edge-${i}`,
-          source: from,
-          target: to,
+          source: `from-${from}`,
+          target: `to-${to}`,
           type: "smoothstep",
           animated: true,
           style: {
@@ -184,18 +186,17 @@ function TransitionMapInner({ stories, onNodeClick, selectedRole }) {
     setNodes(initialNodes);
   }, [initialNodes, setNodes]);
 
-  // Авто-fit — центрируем карту после рендера
   useEffect(() => {
     const timeout = setTimeout(() => {
-      fitView({ padding: 0.1, duration: 400 });
-    }, 150);
+      fitView({ padding: 0.05, duration: 400 });
+    }, 200);
     return () => clearTimeout(timeout);
   }, [initialNodes, fitView]);
 
   const handleNodeClick = useCallback(
     (event, node) => {
       if (onNodeClick) {
-        onNodeClick(node.id);
+        onNodeClick(node.id.replace(/^(from|to)-/, ""));
       }
     },
     [onNodeClick]
@@ -212,7 +213,7 @@ function TransitionMapInner({ stories, onNodeClick, selectedRole }) {
   }
 
   return (
-    <div className="app-card h-[500px] md:h-[600px] relative">
+    <div className="app-card h-[700px] md:h-[900px] relative">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -221,7 +222,7 @@ function TransitionMapInner({ stories, onNodeClick, selectedRole }) {
         onNodeClick={handleNodeClick}
         nodeTypes={nodeTypes}
         fitView
-        fitViewOptions={{ padding: 0.1 }}
+        fitViewOptions={{ padding: 0.05 }}
         minZoom={0.2}
         maxZoom={1.5}
         attributionPosition="bottom-right"

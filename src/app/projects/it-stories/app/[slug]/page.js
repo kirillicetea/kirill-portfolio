@@ -1,3 +1,5 @@
+import CommentsSection from "./CommentsSection";
+import LikeButton from "../LikeButton";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { supabase } from "@/app/lib/supabase";
@@ -15,6 +17,15 @@ async function getStory(slug) {
 
   if (error || !data) return null;
   return data;
+}
+
+async function incrementViews(storyId, currentViews) {
+  // Обновляем только если это реальный просмотр (не бот)
+  // В MVP — просто +1 при каждом открытии
+  await supabase
+    .from("stories")
+    .update({ views: (currentViews || 0) + 1 })
+    .eq("id", storyId);
 }
 
 export async function generateMetadata({ params }) {
@@ -39,6 +50,9 @@ export default async function StoryPage({ params }) {
     notFound();
   }
 
+  // Увеличиваем счётчик просмотров
+  await incrementViews(story.id, story.views);
+
   return (
     <article className="max-w-3xl mx-auto">
       {/* Навигация назад */}
@@ -57,20 +71,31 @@ export default async function StoryPage({ params }) {
         </h1>
 
         <div className="flex flex-wrap items-center gap-4 text-sm text-[#a78bfa] mb-6">
-          <span>
-            Автор: <span className="text-[#f5f3ff]">{story.author_name}</span>
-          </span>
+  <span>
+    Автор: <span className="text-[#f5f3ff]">{story.author_name}</span>
+  </span>
 
-          {story.published_at && (
-            <span className="font-mono">
-              {new Date(story.published_at).toLocaleDateString("ru-RU", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
-            </span>
-          )}
-        </div>
+  {story.published_at && (
+    <span className="font-mono">
+      {new Date(story.published_at).toLocaleDateString("ru-RU", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })}
+    </span>
+  )}
+
+  <div className="flex items-center gap-3">
+  <LikeButton
+    storyId={story.id}
+    initialLikes={story.likes || 0}
+    size="lg"
+  />
+  <span className="inline-flex items-center gap-1 text-xs text-[#7c6f9e] font-mono">
+    👁 {story.views + 1} {story.views + 1 === 1 ? "просмотр" : "просмотров"}
+  </span>
+</div>
+</div>
 
         {/* Переход откуда → куда */}
         {story.from_role && story.to_role && (
@@ -137,16 +162,19 @@ export default async function StoryPage({ params }) {
         </div>
       )}
 
-      {/* CTA назад */}
-      <div className="text-center">
-        <Link
-          href="/projects/it-stories/app/feed"
-          className="inline-flex items-center gap-2 text-[#a855f7] hover:text-[#ec4899] font-semibold transition-colors text-sm"
-        >
-          <FaArrowLeft className="text-xs" />
-          Вернуться к списку историй
-        </Link>
-      </div>
+      {/* Комментарии */}
+<CommentsSection storyId={story.id} />
+
+{/* CTA назад */}
+<div className="text-center mt-12">
+  <Link
+    href="/projects/it-stories/app/feed"
+    className="inline-flex items-center gap-2 text-[#a855f7] hover:text-[#ec4899] font-semibold transition-colors text-sm"
+  >
+    <FaArrowLeft className="text-xs" />
+    Вернуться к списку историй
+  </Link>
+</div>
     </article>
   );
 }
