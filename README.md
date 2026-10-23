@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**Менеджер проектов | Коуч | Мотиватор**
+**Менеджер проектов в сфере ИИ**
 
 [![Site](https://img.shields.io/badge/Сайт-kirillmironchuk.ru-3b82f6?style=for-the-badge&logo=googlechrome&logoColor=white)](https://kirillmironchuk.ru)
 [![Telegram](https://img.shields.io/badge/Telegram-@kirill__icetea-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/kirill_icetea)

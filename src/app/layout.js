@@ -4,7 +4,7 @@ import ScrollProgress from "./ScrollProgress";
 
 export const metadata = {
   metadataBase: new URL("https://kirillmironchuk.ru"),
-  title: "Кирилл Мирончук — Проектный менеджер | Коуч | Мотиватор",
+  title: "Кирилл Мирончук — Менеджер проектов в сфере ИИ",
   description:
     "4+ года в клиентском менеджменте. Координация федеральных проектов. Магистратура по управлению AI-проектами.",
   icons: {
@@ -16,7 +16,7 @@ export const metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Кирилл Мирончук — Проектный менеджер | Коуч | Мотиватор",
+    title: "Кирилл Мирончук — Менеджер проектов в сфере ИИ",
     description:
       "4+ года в клиентском менеджменте. Координация федеральных проектов. Магистратура по управлению AI-проектами.",
     url: "https://kirillmironchuk.ru",
@@ -34,7 +34,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Кирилл Мирончук — Проектный менеджер | Коуч | Мотиватор",
+    title: "Кирилл Мирончук — Менеджер проектов в сфере ИИ",
     description:
       "4+ года в клиентском менеджменте. Координация федеральных проектов. Магистратура по управлению AI-проектами.",
     images: ["/opengraph-image"],

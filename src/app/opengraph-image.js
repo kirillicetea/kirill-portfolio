@@ -61,7 +61,7 @@ export default async function Image() {
             textAlign: "center",
           }}
         >
-          Менеджер проектов | Коуч | Мотиватор
+          Менеджер проектов в сфере ИИ
         </div>
 
         {/* URL */}

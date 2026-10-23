@@ -130,9 +130,26 @@ html {
 
 /* Custom cursor — скрываем системный на десктопе */
 /* Custom cursor — скрываем системный только на портфолио */
+/* Custom cursor — скрываем системный, кроме интерактивных элементов */
 @media (min-width: 768px) {
   body:not(.app-mode) * {
     cursor: none !important;
+  }
+
+  /* Возвращаем системный курсор для select и option */
+  body:not(.app-mode) select,
+  body:not(.app-mode) select *,
+  body:not(.app-mode) option,
+  body:not(.app-mode) option * {
+    cursor: pointer !important;
+  }
+
+  /* Возвращаем текстовый курсор для полей ввода */
+  body:not(.app-mode) input,
+  body:not(.app-mode) input[type="text"],
+  body:not(.app-mode) input[type="email"],
+  body:not(.app-mode) textarea {
+    cursor: text !important;
   }
 }
 

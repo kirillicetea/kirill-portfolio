@@ -110,7 +110,7 @@ export default function Home() {
           {/* Подзаголовок */}
           <FadeIn delay={0.4}>
   <p className="text-xl md:text-2xl text-slate-300 mb-2">
-    Менеджер проектов | Коуч | Мотиватор
+    Менеджер проектов в сфере ИИ
   </p>
 </FadeIn>
 
@@ -599,42 +599,6 @@ export default function Home() {
                   </p>
                   <a href="#contact" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold transition-colors group-hover:gap-3">
                     Обсудить задачи <span>→</span>
-                  </a>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Коучинг */}
-            <FadeIn delay={0.4}>
-              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="relative">
-                  <div className="text-4xl mb-3 text-blue-400">
-                    <FaBullseye />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Коучинг и наставничество</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                    Помогаю начинающим специалистам: цели, навыки, разбор кейсов, план роста.
-                  </p>
-                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                    Записаться →
-                  </a>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Мотивация */}
-            <FadeIn delay={0.5}>
-              <div className="glass rounded-2xl p-6 hover:border-blue-500 transition-all relative overflow-hidden group h-full">
-                <div className="relative">
-                  <div className="text-4xl mb-3 text-blue-400">
-                    <FaMicrophone />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Мотивация и выступления</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                    Лекции, мастер-классы. Делюсь опытом: карьера, IT-переход, смена профессии.
-                  </p>
-                  <a href="#contact" className="text-blue-400 hover:text-blue-300 text-sm font-semibold">
-                    Пригласить →
                   </a>
                 </div>
               </div>
@@ -1599,10 +1563,9 @@ export default function Home() {
                       className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
                     >
                       <option>Проектное управление</option>
-                      <option>Коучинг и наставничество</option>
-                      <option>Мотивация и выступления</option>
                       <option>Клиентский сервис</option>
                       <option>Менторство в IT-переходе</option>
+                      <option>Поддержка проектов</option>
                       <option>Другое</option>
                     </select>
                   </div>
@@ -1656,7 +1619,7 @@ export default function Home() {
                 Кирилл Мирончук
               </h3>
               <p className="text-sm text-slate-400 mb-4">
-                Проектный менеджер | Коуч | Мотиватор
+                Менеджер проектов в сфере ИИ
               </p>
               <p className="text-xs text-slate-500">
                 Помогаю людям и компаниям достигать целей
